@@ -1,0 +1,40 @@
+{
+  "id": "49jyccjt5v",
+  "name": {
+    "tr": "Rezervasyon",
+    "en": "Booking",
+    "ar": "الحجز"
+  },
+  "description": {
+    "tr": "Konaklama talep formu (demo).",
+    "en": "Stay request form (demo).",
+    "ar": "نموذج طلب إقامة (تجريبي)."
+  },
+  "keyword": {
+    "tr": "rezervasyon",
+    "en": "booking",
+    "ar": "حجز"
+  },
+  "path": "teklif-al",
+  "icon": "hotel",
+  "category": "",
+  "status": "play",
+  "desing": {
+    "header": [],
+    "body": [
+      "k0tts0",
+      "b36djl"
+    ],
+    "footer": []
+  },
+  "index": 4,
+  "url": "",
+  "text": {},
+  "title": {
+    "tr": "Rezervasyon",
+    "en": "Booking",
+    "ar": "الحجز"
+  },
+  "date": "2026-11-16T11:53:22.367Z",
+  "update": "2026-11-16T11:56:11.317Z"
+}

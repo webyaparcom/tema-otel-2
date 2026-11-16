@@ -1,0 +1,54 @@
+{
+  "order": false,
+  "user": false,
+  "description": {
+    "tr": "Badem Taş Konak: Datça’da badem ve zeytin ağaçları arasında 16 odalı taş konak; odalar, olanaklar ve konaklama talebi. Demo site; içerik kurgusaldır.",
+    "en": "Badem Tas Konak: a 16-room stone mansion among almond and olive trees in Datca; rooms, facilities and stay requests. Demo site; content is fictional.",
+    "ar": "بادم طاش كوناك: قصر حجري من 16 غرفة بين أشجار اللوز والزيتون في داتشا؛ الغرف والمرافق وطلب الإقامة. موقع تجريبي؛ المحتوى افتراضي."
+  },
+  "keyword": {
+    "tr": "taş konak, butik otel, Datça, konaklama",
+    "en": "stone mansion, boutique hotel, Datca, accommodation",
+    "ar": "قصر حجري، فندق بوتيك، داتشا، إقامة"
+  },
+  "category": "Kurumsal",
+  "name": "Badem Taş Konak",
+  "domain": "otel-2.webyapar.com",
+  "langs": {
+    "tr": true,
+    "en": true,
+    "ar": true,
+    "de": false,
+    "ru": false,
+    "es": false,
+    "fr": false,
+    "it": false,
+    "ja": false,
+    "zh": false,
+    "ko": false,
+    "pt": false
+  },
+  "logo": "logo.png",
+  "multi": false,
+  "publishMode": "static",
+  "font": {
+    "body": "source-sans-3",
+    "heading": "playfair-display",
+    "ar": {
+      "body": "ibm-plex-sans-arabic",
+      "heading": "noto-naskh-arabic"
+    }
+  },
+  "colorScheme": "auto",
+  "theme_color": "#9A4F2E",
+  "seo": {
+    "noindex": true
+  },
+  "cssTokens": {
+    "--mx-radius-sm": "4px",
+    "--mx-radius-md": "6px",
+    "--mx-radius-lg": "8px",
+    "--mx-radius-xl": "11px"
+  },
+  "icon": "icon.png"
+}

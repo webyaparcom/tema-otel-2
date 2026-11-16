@@ -1,0 +1,40 @@
+{
+  "id": "s8zcc0u1wz",
+  "name": {
+    "tr": "Odalar ve olanaklar",
+    "en": "Rooms and facilities",
+    "ar": "الغرف والمرافق"
+  },
+  "description": {
+    "tr": "Fiyatlar tarihe ve doluluğa göre değiştiği için konaklama talebiyle bilgi verilir.",
+    "en": "Prices vary by date and occupancy, so details are shared with your stay request.",
+    "ar": "تختلف الأسعار حسب التاريخ والإشغال، لذا تُقدَّم التفاصيل مع طلب الإقامة."
+  },
+  "keyword": {
+    "tr": "Odalar ve olanaklar",
+    "en": "Rooms and facilities",
+    "ar": "الغرف والمرافق"
+  },
+  "path": "hizmetler",
+  "icon": "bed",
+  "category": "",
+  "status": "play",
+  "desing": {
+    "header": [],
+    "body": [
+      "9ng65q",
+      "k0tts0"
+    ],
+    "footer": []
+  },
+  "index": 0,
+  "url": "",
+  "text": {},
+  "title": {
+    "tr": "Odalar ve olanaklar",
+    "en": "Rooms and facilities",
+    "ar": "الغرف والمرافق"
+  },
+  "date": "2026-11-16T11:53:22.348Z",
+  "update": "2026-11-16T11:56:11.304Z"
+}
