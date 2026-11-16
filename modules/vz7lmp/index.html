@@ -1,0 +1,70 @@
+<section class="modulex-deger-muhur-halka{{fbsinif}}" {{fbetiket}}>
+  <div class="modulex-deger-muhur-halka-ic">
+    {{fbbas}}
+    {{fbgovde}}
+  </div>
+</section>
+
+<style>
+  /* deger-muhur-halka — deger-ikon-dev ve hizmet-ikon-madalyon düz daire + kesik halkadır; bu modülde halka bir yazı yoludur (değer adı mühürün çevresinde akar), kenar tırtıklı mühür ve altında kesik uçlu kurdele vardır. */
+  .modulex-deger-muhur-halka { box-sizing: border-box; width: 100%; padding: --bosluk-- 20px; background: --bg--; color: --text--; font-size: 1rem; line-height: 1.6; font-family: var(--mx-font-sans, inherit); overflow-wrap: break-word; }
+  .modulex-deger-muhur-halka *, .modulex-deger-muhur-halka *::before, .modulex-deger-muhur-halka *::after { box-sizing: border-box; }
+  /* ham/css.css «* { font-size: 14px }» kalıtımı keser — modül içinde boyut üstten gelsin (ikon yazı tipi hariç) */
+  .modulex-deger-muhur-halka :where(*:not(.material-symbols-outlined)) { font-size: inherit; }
+  /* aynı «*» kuralı font-weight 400 · line-height 1.2 · font-family de basar — modül içinde kalıtım */
+  .modulex-deger-muhur-halka :where(*:not(.material-symbols-outlined)) { font-weight: inherit; line-height: inherit; font-family: inherit; }
+  .modulex-deger-muhur-halka :where(h2, h3, h4, p, ul, ol, li, figure, blockquote, dl, dd) { margin: 0; }
+  .modulex-deger-muhur-halka :where(ul, ol) { padding: 0; list-style: none; }
+  .modulex-deger-muhur-halka img { display: block; max-width: 100%; }
+  /* <img width height> öznitelik yüksekliği CSS aspect-ratio'yu ezer — sıfır özgüllükle auto (modül sınıfının height'ı yine kazanır) */
+  :where(.modulex-deger-muhur-halka) img { height: auto; }
+  .modulex-deger-muhur-halka [hidden] { display: none !important; }
+  .modulex-deger-muhur-halka :where(a, button, summary, [data-cevir]) { cursor: pointer; }
+  .modulex-deger-muhur-halka :where(a, button, summary, [tabindex]):focus-visible { outline: 3px solid --accent--; outline-offset: 3px; }
+  .modulex-deger-muhur-halka-ic { max-width: --max--; margin-inline: auto; }
+  .modulex-deger-muhur-halka-bas { display: grid; gap: 12px; margin-block-end: clamp(32px, 4vw, 52px); }
+  .modulex-deger-muhur-halka--bassiz .modulex-deger-muhur-halka-bas { display: none; }
+  .modulex-deger-muhur-halka-ust { color: --accentInk--; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+  .modulex-deger-muhur-halka-baslik { font-family: var(--mx-font-heading, inherit); font-size: clamp(1.8rem, 3.4vw, 2.8rem); font-weight: 750; letter-spacing: -0.025em; line-height: 1.1; }
+  .modulex-deger-muhur-halka-metin { color: --muted--; font-size: 1.05rem; line-height: 1.7; }
+  .modulex-deger-muhur-halka-bas { max-width: 780px; margin-inline: auto; text-align: center; justify-items: center; }
+  .modulex-deger-muhur-halka-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-block-start: 8px; }
+  .modulex-deger-muhur-halka-dugme { display: inline-flex; align-items: center; gap: 8px; min-height: 48px; padding: 12px 22px; border: 2px solid --accent--; border-radius: 999px; background: --accent--; color: --accentText--; font-weight: 700; text-decoration: none; transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease; }
+  .modulex-deger-muhur-halka-dugme:hover { transform: translateY(-2px); }
+  .modulex-deger-muhur-halka-dugme--ikincil { background: transparent; color: --text--; border-color: --cizgi--; }
+  .modulex-deger-muhur-halka-dugme--ikincil:hover { border-color: --accent--; }
+  .modulex-deger-muhur-halka-dugme .material-symbols-outlined { font-size: 20px; }
+
+  .modulex-deger-muhur-halka-liste { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr)); gap: 48px 28px; }
+  .modulex-deger-muhur-halka-oge { position: relative; display: grid; justify-items: center; align-content: start; gap: 10px; text-align: center; }
+  .modulex-deger-muhur-halka-muhur { position: relative; display: grid; place-items: center; width: 190px; aspect-ratio: 1; transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1); }
+  .modulex-deger-muhur-halka-muhur::before { content: ""; position: absolute; inset: 0; background: --accent--; clip-path: polygon(100.00% 50.00%, 96.10% 56.07%, 98.30% 62.94%, 92.96% 67.79%, 93.30% 75.00%, 86.89% 78.31%, 85.36% 85.36%, 78.31% 86.89%, 75.00% 93.30%, 67.79% 92.96%, 62.94% 98.30%, 56.07% 96.10%, 50.00% 100.00%, 43.93% 96.10%, 37.06% 98.30%, 32.21% 92.96%, 25.00% 93.30%, 21.69% 86.89%, 14.64% 85.36%, 13.11% 78.31%, 6.70% 75.00%, 7.04% 67.79%, 1.70% 62.94%, 3.90% 56.07%, 0.00% 50.00%, 3.90% 43.93%, 1.70% 37.06%, 7.04% 32.21%, 6.70% 25.00%, 13.11% 21.69%, 14.64% 14.64%, 21.69% 13.11%, 25.00% 6.70%, 32.21% 7.04%, 37.06% 1.70%, 43.93% 3.90%, 50.00% 0.00%, 56.07% 3.90%, 62.94% 1.70%, 67.79% 7.04%, 75.00% 6.70%, 78.31% 13.11%, 85.36% 14.64%, 86.89% 21.69%, 93.30% 25.00%, 92.96% 32.21%, 98.30% 37.06%, 96.10% 43.93%); }
+  .modulex-deger-muhur-halka-muhur::after { content: ""; position: absolute; inset: 24%; border: 1.5px dashed color-mix(in srgb, --accentText-- 55%, transparent); border-radius: 50%; }
+  .modulex-deger-muhur-halka-halka { position: absolute; inset: 0; z-index: 1; width: 100%; height: 100%; animation: modulex-deger-muhur-halka-don 50s linear infinite; }
+  .modulex-deger-muhur-halka-hyazi { fill: --accentText--; font-size: 13px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; }
+  [dir="rtl"] .modulex-deger-muhur-halka-hyazi { direction: ltr; unicode-bidi: isolate; letter-spacing: 0; text-transform: none; }
+  .modulex-deger-muhur-halka-cekirdek { position: relative; z-index: 1; display: grid; place-items: center; width: 44%; aspect-ratio: 1; border-radius: 50%; background: --accentText--; color: --accent--; }
+  .modulex-deger-muhur-halka-ikon { font-size: 40px; }
+  .modulex-deger-muhur-halka-oge:hover .modulex-deger-muhur-halka-muhur { transform: rotate(-10deg) scale(1.04); }
+  .modulex-deger-muhur-halka-oge:hover .modulex-deger-muhur-halka-halka { animation-duration: 10s; }
+  .modulex-deger-muhur-halka-kurdele { position: relative; z-index: 2; margin-block-start: -24px; padding: 6px 24px; background: --text--; color: --bg--; font-size: 0.78rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; clip-path: polygon(0 0, 100% 0, calc(100% - 10px) 50%, 100% 100%, 0 100%, 10px 50%); }
+  .modulex-deger-muhur-halka-kbaslik { margin-block-start: 6px; font-family: var(--mx-font-serif, var(--mx-font-heading, serif)); font-size: 1.3rem; font-weight: 700; }
+  .modulex-deger-muhur-halka-kmetin { max-width: 30ch; color: --muted--; font-size: 0.95rem; }
+  @keyframes modulex-deger-muhur-halka-don { to { transform: rotate(360deg); } }
+  @media (max-width: 768px) {
+    .modulex-deger-muhur-halka-liste { grid-template-columns: repeat(auto-fit, minmax(min(100%, 160px), 1fr)); gap: 40px 16px; }
+    .modulex-deger-muhur-halka-muhur { width: 160px; }
+  }
+  .modulex-deger-muhur-halka-bag { color: inherit; text-decoration: none; }
+  .modulex-deger-muhur-halka-bag::after { content: ""; position: absolute; inset: 0; z-index: 3; }
+  .modulex-deger-muhur-halka-bag:hover { text-decoration: underline; text-underline-offset: 4px; }
+
+  :is([lang="ar"], [lang="fa"], [lang="he"], [lang="ur"]) .modulex-deger-muhur-halka :is(.modulex-deger-muhur-halka-baslik, .modulex-deger-muhur-halka-ust, h3, h4, strong) { letter-spacing: 0; }
+  :is([lang="ar"], [lang="fa"], [lang="he"], [lang="ur"]) .modulex-deger-muhur-halka-baslik { line-height: 1.35; }
+  @media (max-width: 768px) {
+    .modulex-deger-muhur-halka { padding-inline: 16px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .modulex-deger-muhur-halka *, .modulex-deger-muhur-halka *::before, .modulex-deger-muhur-halka *::after { animation: none !important; transition: none !important; }
+  }
+</style>

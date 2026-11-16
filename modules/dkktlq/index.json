@@ -1,0 +1,56 @@
+{
+  "name": "Yorum Konuk Defteri — sayfaları çevrilen anı defteri",
+  "description": "Kapaklı, ortası sırtlı açık bir defter: her yorum noktalı kâğıtta bir sayfa (tarih, başlık, el yazısı imza, sayfa no); masaüstünde çift sayfa, mobilde tek sayfa önceki/sonraki ile çevrilir. JS yoksa tüm sayfalar alt alta. Kitap/defter metaforu ve yaprak çevirme etkileşimi: yorum-mektup'un kâğıt ızgarasından (hepsi aynı anda) ve yorum-portre-ray'in kaydırmalı rayından farklı olarak bir seferde bir açılım okunur; sayfa konumu (3–4 / 6) görünür. Metinler dil sözlüğü, renkler desing + var(--mx-site-*), mantıksal CSS → RTL. Veri yoksa blok basılmaz.",
+  "version": "1.0.0",
+  "icon": "menu_book",
+  "category": "testimonial",
+  "subCategory": "guestbook",
+  "tags": [
+    "testimonial",
+    "guestbook",
+    "book",
+    "page-flip",
+    "interactive",
+    "rtl",
+    "fabrika"
+  ],
+  "desing": {
+    "max": "1200px",
+    "bosluk": "clamp(56px, 8vw, 104px)",
+    "yuvarlak": "18px",
+    "ust": "",
+    "baslik": "",
+    "metin": "",
+    "bg": "var(--mx-site-surface, #f6f7f9)",
+    "text": "var(--mx-site-text, #111318)",
+    "muted": "color-mix(in srgb, var(--mx-site-text, #111318) 70%, var(--mx-site-surface, #f6f7f9))",
+    "kartBg": "var(--mx-site-bg, #ffffff)",
+    "cizgi": "color-mix(in srgb, var(--mx-site-text, #111318) 12%, transparent)",
+    "accent": "var(--mx-site-primary, #2563eb)",
+    "accentInk": "color-mix(in srgb, var(--mx-site-primary, #2563eb) 70%, var(--mx-site-text, #111318))",
+    "accentText": "var(--mx-site-primary-contrast, #ffffff)",
+    "vurguBg": "var(--mx-site-primary, #2563eb)",
+    "vurguText": "var(--mx-site-primary-contrast, #ffffff)",
+    "yildiz": "color-mix(in srgb, var(--mx-color-warning, #d97706) 78%, var(--mx-site-text, #111318))",
+    "bgcolor": "var(--mx-site-surface, #f6f7f9)",
+    "color": "var(--mx-site-text, #111318)"
+  },
+  "data": [],
+  "veri": {
+    "statik": true,
+    "dinamik": false,
+    "kaynak": "data",
+    "alanlar": {
+      "metin": "yorum metni — dil sözlüğü (zorunlu)",
+      "ad": "yorumu yapanın adı",
+      "unvan": "görev / unvan (dil sözlüğü)",
+      "firma": "firma adı",
+      "puan": "1–5 yıldız (0/boş → yıldız yok)",
+      "img": "avatar / portre görseli",
+      "logo": "firma logosu (destekleyen yerleşimde)",
+      "baslik": "yorum başlığı (destekleyen yerleşimde)",
+      "tarih": "tarih metni",
+      "kaynak": "kaynak (Google, Instagram …)"
+    }
+  }
+}

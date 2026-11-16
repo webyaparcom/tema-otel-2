@@ -1,0 +1,145 @@
+<section class="modulex-iletisim-resepsiyon{{fbsinif}}" {{fbetiket}}>
+  <div class="modulex-iletisim-resepsiyon-ic">
+    {{fbbas}}
+    {{fbgovde}}
+  </div>
+</section>
+
+<style>
+  /* iletisim-resepsiyon — iletisim-sekmeli / iletisim-dikey-sekme kanal değerini gösteren role=tab panelleridir; bu modül radyo segmentli (CSS :has ile JS'siz çalışır) bir MESAJ MASASI: yazılan metin canlı olarak wa.me / mailto bağlantısına işlenir, yerel saat Intl timeZone ile akar. */
+  .modulex-iletisim-resepsiyon { box-sizing: border-box; width: 100%; padding: --bosluk-- 20px; background: --bg--; color: --text--; font-size: 1rem; line-height: 1.6; font-family: var(--mx-font-sans, inherit); overflow-wrap: break-word; }
+  .modulex-iletisim-resepsiyon *, .modulex-iletisim-resepsiyon *::before, .modulex-iletisim-resepsiyon *::after { box-sizing: border-box; }
+  /* ham/css.css «* { font-size: 14px }» kalıtımı keser — modül içinde boyut üstten gelsin (ikon yazı tipi hariç) */
+  .modulex-iletisim-resepsiyon :where(*:not(.material-symbols-outlined)) { font-size: inherit; }
+  /* aynı «*» kuralı font-weight 400 · line-height 1.2 · font-family de basar — modül içinde kalıtım */
+  .modulex-iletisim-resepsiyon :where(*:not(.material-symbols-outlined)) { font-weight: inherit; line-height: inherit; font-family: inherit; }
+  .modulex-iletisim-resepsiyon :where(h2, h3, h4, p, ul, ol, li, figure, blockquote, dl, dd) { margin: 0; }
+  .modulex-iletisim-resepsiyon :where(ul, ol) { padding: 0; list-style: none; }
+  .modulex-iletisim-resepsiyon img { display: block; max-width: 100%; }
+  /* <img width height> öznitelik yüksekliği CSS aspect-ratio'yu ezer — sıfır özgüllükle auto (modül sınıfının height'ı yine kazanır) */
+  :where(.modulex-iletisim-resepsiyon) img { height: auto; }
+  .modulex-iletisim-resepsiyon [hidden] { display: none !important; }
+  .modulex-iletisim-resepsiyon :where(a, button, summary, [data-cevir]) { cursor: pointer; }
+  .modulex-iletisim-resepsiyon :where(a, button, summary, [tabindex]):focus-visible { outline: 3px solid --accent--; outline-offset: 3px; }
+  .modulex-iletisim-resepsiyon-ic { max-width: --max--; margin-inline: auto; }
+  .modulex-iletisim-resepsiyon-bas { display: grid; gap: 12px; margin-block-end: clamp(32px, 4vw, 52px); }
+  .modulex-iletisim-resepsiyon--bassiz .modulex-iletisim-resepsiyon-bas { display: none; }
+  .modulex-iletisim-resepsiyon-ust { color: --accentInk--; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+  .modulex-iletisim-resepsiyon-baslik { font-family: var(--mx-font-heading, inherit); font-size: clamp(1.8rem, 3.4vw, 2.8rem); font-weight: 750; letter-spacing: -0.025em; line-height: 1.1; }
+  .modulex-iletisim-resepsiyon-metin { color: --muted--; font-size: 1.05rem; line-height: 1.7; }
+  .modulex-iletisim-resepsiyon-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-block-start: 8px; }
+  .modulex-iletisim-resepsiyon-dugme { display: inline-flex; align-items: center; gap: 8px; min-height: 48px; padding: 12px 22px; border: 2px solid --accent--; border-radius: 999px; background: --accent--; color: --accentText--; font-weight: 700; text-decoration: none; transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease; }
+  .modulex-iletisim-resepsiyon-dugme:hover { transform: translateY(-2px); }
+  .modulex-iletisim-resepsiyon-dugme--ikincil { background: transparent; color: --text--; border-color: --cizgi--; }
+  .modulex-iletisim-resepsiyon-dugme--ikincil:hover { border-color: --accent--; }
+  .modulex-iletisim-resepsiyon-dugme .material-symbols-outlined { font-size: 20px; }
+
+  .modulex-iletisim-resepsiyon-masa { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: clamp(24px, 4vw, 64px); align-items: center; }
+  .modulex-iletisim-resepsiyon-masa--tek { grid-template-columns: minmax(0, 1fr); }
+  .modulex-iletisim-resepsiyon-sol { display: grid; gap: 16px; min-width: 0; }
+  .modulex-iletisim-resepsiyon-rozet { display: inline-flex; align-items: center; gap: 10px; width: fit-content; padding: 8px 16px; border-radius: 999px; background: --vurguBg--; color: --vurguText--; font-size: 0.92rem; font-weight: 750; letter-spacing: 0.02em; }
+  .modulex-iletisim-resepsiyon-nabiz { flex: none; width: 10px; height: 10px; border-radius: 50%; background: currentColor; animation: modulex-iletisim-resepsiyon-nabiz 1.8s ease-out infinite; }
+  @keyframes modulex-iletisim-resepsiyon-nabiz { 0% { box-shadow: 0 0 0 0 color-mix(in srgb, currentColor 70%, transparent); } 100% { box-shadow: 0 0 0 12px transparent; } }
+  .modulex-iletisim-resepsiyon-yerel { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 8px; color: --muted--; font-variant-numeric: tabular-nums; }
+  .modulex-iletisim-resepsiyon-yerel .material-symbols-outlined { color: --accentInk--; font-size: 20px; }
+  .modulex-iletisim-resepsiyon-yerel b { color: --text--; font-size: 1.15rem; font-weight: 750; }
+  .modulex-iletisim-resepsiyon-diger { display: grid; gap: 14px; margin-block-start: 8px; }
+  .modulex-iletisim-resepsiyon-dsat { display: flex; align-items: center; gap: 14px; min-width: 0; }
+  .modulex-iletisim-resepsiyon-kgovde { display: grid; gap: 2px; min-width: 0; }
+  .modulex-iletisim-resepsiyon-kart { display: grid; gap: 18px; padding: clamp(20px, 3.4vw, 36px); border-radius: --yuvarlak--; background: --bg--; box-shadow: 0 30px 60px -36px color-mix(in srgb, --text-- 45%, transparent); }
+  .modulex-iletisim-resepsiyon-secici { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: 6px; padding: 6px; border-radius: 16px; background: --kartBg--; }
+  .modulex-iletisim-resepsiyon-ksec { position: relative; display: grid; }
+  .modulex-iletisim-resepsiyon-kradyo { position: absolute; inset-block-start: 0; inset-inline-start: 0; inline-size: 1px; block-size: 1px; opacity: 0; pointer-events: none; }
+  .modulex-iletisim-resepsiyon-ksyazi { display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 8px 10px; border-radius: 12px; font-weight: 700; text-align: center; transition: background 0.25s ease, color 0.25s ease, box-shadow 0.25s ease; }
+  .modulex-iletisim-resepsiyon-ksik { font-size: 20px; }
+  .modulex-iletisim-resepsiyon-ksec:hover .modulex-iletisim-resepsiyon-ksyazi { background: color-mix(in srgb, --accent-- 10%, transparent); }
+  .modulex-iletisim-resepsiyon-kradyo:checked + .modulex-iletisim-resepsiyon-ksyazi { background: --accent--; color: --accentText--; box-shadow: 0 8px 18px -10px color-mix(in srgb, --text-- 50%, transparent); }
+  .modulex-iletisim-resepsiyon-kradyo:focus-visible + .modulex-iletisim-resepsiyon-ksyazi { outline: 3px solid --accent--; outline-offset: 2px; }
+  .modulex-iletisim-resepsiyon-panel { display: grid; gap: 12px; animation: modulex-iletisim-resepsiyon-gel 0.3s ease both; }
+  @supports selector(:has(*)) {
+    .modulex-iletisim-resepsiyon-panel:not(.modulex-iletisim-resepsiyon-panel--tek) { display: none; }
+    .modulex-iletisim-resepsiyon-kart:has(.modulex-iletisim-resepsiyon-kradyo[value="wa"]:checked) .modulex-iletisim-resepsiyon-panel--wa, .modulex-iletisim-resepsiyon-kart:has(.modulex-iletisim-resepsiyon-kradyo[value="tel"]:checked) .modulex-iletisim-resepsiyon-panel--tel, .modulex-iletisim-resepsiyon-kart:has(.modulex-iletisim-resepsiyon-kradyo[value="eposta"]:checked) .modulex-iletisim-resepsiyon-panel--eposta { display: grid; }
+  }
+  @keyframes modulex-iletisim-resepsiyon-gel { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  .modulex-iletisim-resepsiyon-metet { font-size: 0.9rem; font-weight: 650; }
+  .modulex-iletisim-resepsiyon-yazi { width: 100%; min-height: 112px; padding: 12px 14px; border: 1.5px solid color-mix(in srgb, --text-- 26%, transparent); border-radius: 12px; background: --kartBg--; color: --text--; font: inherit; resize: vertical; transition: border-color 0.2s ease, box-shadow 0.2s ease; }
+  .modulex-iletisim-resepsiyon-yazi:focus { outline: none; border-color: --accent--; box-shadow: 0 0 0 3px color-mix(in srgb, --accent-- 28%, transparent); }
+  .modulex-iletisim-resepsiyon-panel .modulex-iletisim-resepsiyon-dugme { justify-self: start; }
+  .modulex-iletisim-resepsiyon-buyukno { color: --text--; font-family: var(--mx-font-heading, inherit); font-size: clamp(1.7rem, 4vw, 2.6rem); font-weight: 800; letter-spacing: -0.01em; line-height: 1.15; text-decoration: none; overflow-wrap: anywhere; transition: color 0.2s ease; }
+  .modulex-iletisim-resepsiyon-buyukno:hover { color: --accentInk--; }
+  @media (max-width: 1024px) {
+    .modulex-iletisim-resepsiyon-masa { grid-template-columns: minmax(0, 1fr); }
+  }
+  @media (max-width: 768px) {
+    .modulex-iletisim-resepsiyon-secici { grid-auto-flow: row; }
+    .modulex-iletisim-resepsiyon-panel .modulex-iletisim-resepsiyon-dugme { justify-self: stretch; justify-content: center; }
+  }
+  .modulex-iletisim-resepsiyon-kikon { flex: none; display: inline-grid; place-items: center; width: 48px; height: 48px; border-radius: 14px; background: color-mix(in srgb, --accent-- 14%, transparent); color: --accentInk--; font-size: 24px; }
+  .modulex-iletisim-resepsiyon-ketiket { display: block; color: --muted--; font-size: 0.82rem; font-weight: 650; letter-spacing: 0.06em; text-transform: uppercase; }
+  .modulex-iletisim-resepsiyon-deger { color: inherit; font-weight: 650; text-decoration: none; overflow-wrap: anywhere; transition: color 0.2s ease; }
+  a.modulex-iletisim-resepsiyon-deger:hover { color: --accentInk--; text-decoration: underline; text-underline-offset: 4px; }
+  .modulex-iletisim-resepsiyon-eylem { display: inline-flex; align-items: center; gap: 6px; color: --accentInk--; font-weight: 700; text-decoration: none; transition: gap 0.2s ease; }
+  .modulex-iletisim-resepsiyon-eylem:hover { gap: 10px; }
+  .modulex-iletisim-resepsiyon-eylem .material-symbols-outlined { font-size: 18px; }
+  .modulex-iletisim-resepsiyon-kopya { display: none; align-items: center; gap: 6px; min-height: 36px; padding: 6px 12px; border: 1px solid --cizgi--; border-radius: 999px; background: transparent; color: --text--; font: inherit; font-size: 0.85rem; font-weight: 650; transition: border-color 0.2s ease, background 0.2s ease; }
+  .modulex-iletisim-resepsiyon--kjs .modulex-iletisim-resepsiyon-kopya { display: inline-flex; }
+  .modulex-iletisim-resepsiyon-kopya:hover { border-color: --accent--; }
+  .modulex-iletisim-resepsiyon-kopya .material-symbols-outlined { font-size: 18px; }
+  .modulex-iletisim-resepsiyon--kopyalandi { background: color-mix(in srgb, --accent-- 14%, transparent); }
+  .modulex-iletisim-resepsiyon-sosyal { display: grid; gap: 10px; }
+  .modulex-iletisim-resepsiyon-sbaslik { color: --muted--; font-size: 0.9rem; font-weight: 650; }
+  .modulex-iletisim-resepsiyon-sliste { display: flex; flex-wrap: wrap; gap: 8px; }
+  .modulex-iletisim-resepsiyon-cip { display: inline-flex; align-items: center; gap: 6px; min-height: 40px; padding: 8px 14px; border: 1px solid --cizgi--; border-radius: 999px; color: inherit; font-weight: 650; text-decoration: none; transition: border-color 0.2s ease, transform 0.2s ease; }
+  .modulex-iletisim-resepsiyon-cip:hover { border-color: --accent--; transform: translateY(-2px); }
+  .modulex-iletisim-resepsiyon-cikon { font-size: 18px; }
+  .modulex-iletisim-resepsiyon-harita { position: relative; overflow: hidden; min-height: 280px; border-radius: --yuvarlak--; background: --kartBg--; }
+  .modulex-iletisim-resepsiyon-iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+  .modulex-iletisim-resepsiyon-hdesen { position: absolute; inset: 0; display: grid; place-items: center; background-color: color-mix(in srgb, --accent-- 8%, --kartBg--); background-image: linear-gradient(color-mix(in srgb, --text-- 7%, transparent) 1px, transparent 1px), linear-gradient(90deg, color-mix(in srgb, --text-- 7%, transparent) 1px, transparent 1px), radial-gradient(circle at 30% 40%, color-mix(in srgb, --accent-- 18%, transparent) 0 18%, transparent 19%); background-size: 36px 36px, 36px 36px, 100% 100%; }
+  .modulex-iletisim-resepsiyon-pin { color: --accentInk--; font-size: 56px; animation: modulex-iletisim-resepsiyon-zipla 2.4s ease-in-out infinite; }
+  @keyframes modulex-iletisim-resepsiyon-zipla { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+  .modulex-iletisim-resepsiyon-hyol { position: absolute; inset-block-end: 16px; inset-inline-start: 16px; display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 10px 16px; border-radius: 999px; background: --bg--; color: --text--; font-weight: 700; text-decoration: none; box-shadow: 0 6px 20px color-mix(in srgb, --text-- 16%, transparent); transition: transform 0.2s ease; }
+  .modulex-iletisim-resepsiyon-hyol:hover { transform: translateY(-2px); }
+  .modulex-iletisim-resepsiyon-hyol .material-symbols-outlined { font-size: 18px; color: --accentInk--; }
+
+  :is([lang="ar"], [lang="fa"], [lang="he"], [lang="ur"]) .modulex-iletisim-resepsiyon :is(.modulex-iletisim-resepsiyon-baslik, .modulex-iletisim-resepsiyon-ust, h3, h4, strong) { letter-spacing: 0; }
+  :is([lang="ar"], [lang="fa"], [lang="he"], [lang="ur"]) .modulex-iletisim-resepsiyon-baslik { line-height: 1.35; }
+  @media (max-width: 768px) {
+    .modulex-iletisim-resepsiyon { padding-inline: 16px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .modulex-iletisim-resepsiyon *, .modulex-iletisim-resepsiyon *::before, .modulex-iletisim-resepsiyon *::after { animation: none !important; transition: none !important; }
+  }
+</style>
+<script>
+  (() => {
+    const P = "modulex-iletisim-resepsiyon";
+    const az = !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+    const kanalYaz = (s) => {
+        s.querySelectorAll("[data-kanal-metin]").forEach((t) => {
+          const a = s.querySelector(`[data-kanal-git="${t.dataset.kanalMetin}"]`);
+          if (!a) return;
+          const kur = () => {
+            const v = t.value.trim();
+            if (a.dataset.wa) a.href = `https://wa.me/${a.dataset.wa}${v ? "?text=" + encodeURIComponent(v) : ""}`;
+            else if (a.dataset.eposta) a.href = `mailto:${a.dataset.eposta}${v ? "?body=" + encodeURIComponent(v.replace(/\n/g, "\r\n")) : ""}`;
+          };
+          t.addEventListener("input", kur);
+          kur();
+        });
+        const y = s.querySelector("[data-yerel-saat]");
+        if (!y || !y.dataset.tz) return;
+        let f = null;
+        try { f = new Intl.DateTimeFormat(document.documentElement.lang || undefined, { timeZone: y.dataset.tz, weekday: "short", hour: "2-digit", minute: "2-digit" }); } catch (e) { return; }
+        const b = y.querySelector("[data-saat]");
+        const yaz = () => { if (b) b.textContent = f.format(new Date()); };
+        yaz();
+        y.hidden = false;
+        setInterval(yaz, 30000);
+      };
+    document.querySelectorAll("." + P).forEach((s) => {
+      if (s.dataset.fbHazir) return;
+      s.dataset.fbHazir = "1";
+      kanalYaz(s, P, az);
+    });
+  })();
+</script>

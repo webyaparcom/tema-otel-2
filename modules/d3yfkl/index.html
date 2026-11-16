@@ -1,0 +1,182 @@
+<section class="modulex-acilis-sahne-gecis{{fbsinif}}" {{fbetiket}}>
+  <div class="modulex-acilis-sahne-gecis-ic">
+    {{fbbas}}
+    {{fbgovde}}
+  </div>
+</section>
+
+<style>
+  /* acilis-sahne-gecis — acilis-tam-ortu ve acilis-alt-hiza tek görsellidir, acilis-cift-gorsel iki görseli yan yana basamaklar, acilis-video-paralaks tek medyayı kaydırır; bu modül birden çok tam ekran sahneyi üst üste tutar ve küçük resim rayı + sayaç + altyazıyla sahne değiştirir. Slider ailesinden farkı: h1 ve metin sabit kalır, yalnız arka sahne değişir. */
+  .modulex-acilis-sahne-gecis { box-sizing: border-box; width: 100%; padding: --bosluk-- 20px; background: --bg--; color: --text--; font-size: 1rem; line-height: 1.6; font-family: var(--mx-font-sans, inherit); overflow-wrap: break-word; }
+  .modulex-acilis-sahne-gecis *, .modulex-acilis-sahne-gecis *::before, .modulex-acilis-sahne-gecis *::after { box-sizing: border-box; }
+  /* ham/css.css «* { font-size: 14px }» kalıtımı keser — modül içinde boyut üstten gelsin (ikon yazı tipi hariç) */
+  .modulex-acilis-sahne-gecis :where(*:not(.material-symbols-outlined)) { font-size: inherit; }
+  /* aynı «*» kuralı font-weight 400 · line-height 1.2 · font-family de basar — modül içinde kalıtım */
+  .modulex-acilis-sahne-gecis :where(*:not(.material-symbols-outlined)) { font-weight: inherit; line-height: inherit; font-family: inherit; }
+  .modulex-acilis-sahne-gecis :where(h2, h3, h4, p, ul, ol, li, figure, blockquote, dl, dd) { margin: 0; }
+  .modulex-acilis-sahne-gecis :where(ul, ol) { padding: 0; list-style: none; }
+  .modulex-acilis-sahne-gecis img { display: block; max-width: 100%; }
+  /* <img width height> öznitelik yüksekliği CSS aspect-ratio'yu ezer — sıfır özgüllükle auto (modül sınıfının height'ı yine kazanır) */
+  :where(.modulex-acilis-sahne-gecis) img { height: auto; }
+  .modulex-acilis-sahne-gecis [hidden] { display: none !important; }
+  .modulex-acilis-sahne-gecis :where(a, button, summary, [data-cevir]) { cursor: pointer; }
+  .modulex-acilis-sahne-gecis :where(a, button, summary, [tabindex]):focus-visible { outline: 3px solid --accent--; outline-offset: 3px; }
+  .modulex-acilis-sahne-gecis-ic { max-width: --max--; margin-inline: auto; }
+  .modulex-acilis-sahne-gecis-bas { display: grid; gap: 12px; margin-block-end: clamp(32px, 4vw, 52px); }
+  .modulex-acilis-sahne-gecis--bassiz .modulex-acilis-sahne-gecis-bas { display: none; }
+  .modulex-acilis-sahne-gecis-ust { color: --accentInk--; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+  .modulex-acilis-sahne-gecis-baslik { font-family: var(--mx-font-heading, inherit); font-size: clamp(1.8rem, 3.4vw, 2.8rem); font-weight: 750; letter-spacing: -0.025em; line-height: 1.1; }
+  .modulex-acilis-sahne-gecis-metin { color: --muted--; font-size: 1.05rem; line-height: 1.7; }
+  .modulex-acilis-sahne-gecis-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-block-start: 8px; }
+  .modulex-acilis-sahne-gecis-dugme { display: inline-flex; align-items: center; gap: 8px; min-height: 48px; padding: 12px 22px; border: 2px solid --accent--; border-radius: 999px; background: --accent--; color: --accentText--; font-weight: 700; text-decoration: none; transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease; }
+  .modulex-acilis-sahne-gecis-dugme:hover { transform: translateY(-2px); }
+  .modulex-acilis-sahne-gecis-dugme--ikincil { background: transparent; color: --text--; border-color: --cizgi--; }
+  .modulex-acilis-sahne-gecis-dugme--ikincil:hover { border-color: --accent--; }
+  .modulex-acilis-sahne-gecis-dugme .material-symbols-outlined { font-size: 20px; }
+
+  section.modulex-acilis-sahne-gecis { padding: 0; }
+  .modulex-acilis-sahne-gecis-ic { max-width: none; }
+  .modulex-acilis-sahne-gecis-sahne { position: relative; display: grid; grid-template-rows: minmax(0, 1fr) auto; min-height: max(620px, 100vh); padding: clamp(110px, 14vw, 170px) max(20px, calc((100% - --max--) / 2)) clamp(18px, 3vw, 30px); isolation: isolate; overflow: hidden; }
+  .modulex-acilis-sahne-gecis-sahne--bos { min-height: max(520px, 72vh); }
+  .modulex-acilis-sahne-gecis-kareler { position: absolute; inset: 0; z-index: -2; }
+  .modulex-acilis-sahne-gecis-kare { position: absolute; inset: 0; margin: 0; opacity: 0; visibility: hidden; transition: opacity 1.1s ease, visibility 0s linear 1.1s; }
+  .modulex-acilis-sahne-gecis-kare--aktif { opacity: 1; visibility: visible; transition: opacity 1.1s ease; }
+  .modulex-acilis-sahne-gecis-foto { inline-size: 100%; block-size: 100%; object-fit: cover; transform: scale(1.1); transition: transform 9s cubic-bezier(0.2, 0.6, 0.2, 1); }
+  .modulex-acilis-sahne-gecis-kare--aktif .modulex-acilis-sahne-gecis-foto { transform: scale(1.01); }
+  .modulex-acilis-sahne-gecis-perde { position: absolute; inset: 0; z-index: -1; background: linear-gradient(to top, --ortu-- 0%, color-mix(in srgb, --ortu-- 60%, transparent) 38%, transparent 70%), linear-gradient(to bottom, color-mix(in srgb, --ortu-- 55%, transparent), transparent 26%); }
+  .modulex-acilis-sahne-gecis-yazi { align-self: end; display: grid; gap: 18px; justify-items: start; max-width: 760px; padding-block-end: clamp(24px, 4vw, 44px); }
+  .modulex-acilis-sahne-gecis-sahne .modulex-acilis-sahne-gecis-h1 { font-size: clamp(2.4rem, 5.6vw, 4.8rem); text-shadow: 0 2px 30px color-mix(in srgb, --ortu-- 60%, transparent); }
+  .modulex-acilis-sahne-gecis-taban { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 28px; padding-block-start: 18px; border-block-start: 1px solid color-mix(in srgb, --ortuText-- 32%, transparent); color: --ortuText--; }
+  .modulex-acilis-sahne-gecis-altyazi { display: inline-flex; align-items: center; gap: 8px; font-size: 0.95rem; font-weight: 600; letter-spacing: 0.02em; }
+  .modulex-acilis-sahne-gecis-aikon { font-size: 20px; }
+  .modulex-acilis-sahne-gecis-sayac { display: flex; align-items: baseline; gap: 6px; font-variant-numeric: tabular-nums; }
+  .modulex-acilis-sahne-gecis-sayac b { font-family: var(--mx-font-heading, inherit); font-size: 2.2rem; font-weight: 800; line-height: 1; }
+  .modulex-acilis-sahne-gecis-bolu { opacity: 0.7; }
+  .modulex-acilis-sahne-gecis-ray { display: flex; align-items: center; gap: 10px; margin-inline-start: auto; padding: 4px; overflow-x: auto; scrollbar-width: none; }
+  .modulex-acilis-sahne-gecis-kucuk { position: relative; flex: none; inline-size: 104px; aspect-ratio: 16 / 11; padding: 0; overflow: hidden; border: 2px solid transparent; border-radius: 12px; background-color: --ortu--; opacity: 0.6; transition: opacity 0.3s ease, border-color 0.3s ease, transform 0.3s ease; }
+  .modulex-acilis-sahne-gecis-kucuk:hover { opacity: 1; transform: translateY(-3px); }
+  .modulex-acilis-sahne-gecis-kucuk[aria-current="true"] { border-color: --ortuText--; opacity: 1; }
+  .modulex-acilis-sahne-gecis-kucuk:focus-visible { outline-color: --ortuText--; }
+  .modulex-acilis-sahne-gecis-kfoto { inline-size: 100%; block-size: 100%; object-fit: cover; }
+  .modulex-acilis-sahne-gecis-kbar { position: absolute; inset-block-end: 0; inset-inline-start: 0; inline-size: 0; block-size: 3px; background-color: --ortuText--; }
+  .modulex-acilis-sahne-gecis--kos .modulex-acilis-sahne-gecis-kucuk[aria-current="true"] .modulex-acilis-sahne-gecis-kbar { animation: modulex-acilis-sahne-gecis-bar var(--sure, 7s) linear both; }
+  @keyframes modulex-acilis-sahne-gecis-bar { from { inline-size: 0; } to { inline-size: 100%; } }
+  .modulex-acilis-sahne-gecis-oto { display: inline-grid; flex: none; place-items: center; inline-size: 44px; block-size: 44px; padding: 0; border: 1.5px solid color-mix(in srgb, --ortuText-- 55%, transparent); border-radius: 50%; background: transparent; color: --ortuText--; transition: border-color 0.2s ease, background-color 0.2s ease; }
+  .modulex-acilis-sahne-gecis-oto:hover { border-color: --ortuText--; background-color: color-mix(in srgb, --ortuText-- 12%, transparent); }
+  .modulex-acilis-sahne-gecis:not(.modulex-acilis-sahne-gecis--gjs) :is(.modulex-acilis-sahne-gecis-ray, .modulex-acilis-sahne-gecis-sayac) { display: none; }
+  @media (max-width: 1024px) {
+    .modulex-acilis-sahne-gecis-kucuk { inline-size: 88px; }
+  }
+  @media (max-width: 768px) {
+    .modulex-acilis-sahne-gecis-sahne { min-height: max(560px, 92vh); padding-block-start: 96px; }
+    .modulex-acilis-sahne-gecis-taban { gap: 10px 18px; }
+    .modulex-acilis-sahne-gecis-ray { flex-basis: 100%; margin-inline-start: 0; }
+    .modulex-acilis-sahne-gecis-kucuk { inline-size: 76px; border-radius: 10px; }
+    .modulex-acilis-sahne-gecis-sayac b { font-size: 1.6rem; }
+  }
+  .modulex-acilis-sahne-gecis-h1 { font-family: var(--mx-font-heading, inherit); font-size: clamp(2.3rem, 5.2vw, 4.2rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.05; text-wrap: balance; }
+  .modulex-acilis-sahne-gecis-metin { color: --muted--; font-size: clamp(1.02rem, 1.3vw, 1.18rem); line-height: 1.7; max-width: 62ch; }
+  .modulex-acilis-sahne-gecis-ogeler { display: flex; flex-wrap: wrap; gap: 14px 30px; }
+  .modulex-acilis-sahne-gecis-oge { display: flex; align-items: center; gap: 10px; }
+  .modulex-acilis-sahne-gecis-oikon { color: --accentInk--; font-size: 22px; }
+  .modulex-acilis-sahne-gecis-odeger { font-size: 1.45rem; font-weight: 800; line-height: 1; font-variant-numeric: tabular-nums; }
+  .modulex-acilis-sahne-gecis-ometin { color: --muted--; font-size: 0.95rem; }
+  .modulex-acilis-sahne-gecis-obag { color: inherit; text-underline-offset: 3px; }
+  .modulex-acilis-sahne-gecis-gir { animation: modulex-acilis-sahne-gecis-gir 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+  @keyframes modulex-acilis-sahne-gecis-gir { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+  :is([lang="ar"], [lang="fa"], [lang="he"], [lang="ur"]) .modulex-acilis-sahne-gecis-h1 { letter-spacing: 0; line-height: 1.3; }
+  .modulex-acilis-sahne-gecis-sahne { background: --ortu--; color: --ortuText--; }
+  .modulex-acilis-sahne-gecis-sahne :is(.modulex-acilis-sahne-gecis-ust, .modulex-acilis-sahne-gecis-metin, .modulex-acilis-sahne-gecis-ometin, .modulex-acilis-sahne-gecis-oikon, .modulex-acilis-sahne-gecis-odeger) { color: --ortuText--; }
+  .modulex-acilis-sahne-gecis-sahne .modulex-acilis-sahne-gecis-dugme--ikincil { color: --ortuText--; border-color: color-mix(in srgb, --ortuText-- 60%, transparent); }
+  .modulex-acilis-sahne-gecis-sahne .modulex-acilis-sahne-gecis-dugme--ikincil:hover { border-color: --ortuText--; }
+  .modulex-acilis-sahne-gecis-sahne :where(a, button):focus-visible { outline-color: --ortuText--; }
+
+  :is([lang="ar"], [lang="fa"], [lang="he"], [lang="ur"]) .modulex-acilis-sahne-gecis :is(.modulex-acilis-sahne-gecis-baslik, .modulex-acilis-sahne-gecis-ust, h3, h4, strong) { letter-spacing: 0; }
+  :is([lang="ar"], [lang="fa"], [lang="he"], [lang="ur"]) .modulex-acilis-sahne-gecis-baslik { line-height: 1.35; }
+  @media (max-width: 768px) {
+    .modulex-acilis-sahne-gecis { padding-inline: 16px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .modulex-acilis-sahne-gecis *, .modulex-acilis-sahne-gecis *::before, .modulex-acilis-sahne-gecis *::after { animation: none !important; transition: none !important; }
+  }
+</style>
+<script>
+  (() => {
+    const P = "modulex-acilis-sahne-gecis";
+    const az = !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+    const sahneGecis = (s, P, az) => {
+        const kare = Array.from(s.querySelectorAll("[data-kare]"));
+        const dug = Array.from(s.querySelectorAll("[data-sahne]"));
+        if (kare.length < 2 || dug.length !== kare.length) return;
+        s.classList.add(P + "--gjs");
+        const no = s.querySelector("[data-no]");
+        const alt = s.querySelector("[data-altyazi]");
+        const altM = s.querySelector("[data-altmetin]");
+        const oto = s.querySelector("[data-oto]");
+        let f;
+        try { f = new Intl.NumberFormat(document.documentElement.lang || undefined); } catch (x) { f = { format: String }; }
+        let i = 0;
+        let t = 0;
+        let dur = az || !oto;
+        let bekle = false;
+        const kur = () => {
+          clearTimeout(t);
+          s.classList.remove(P + "--kos");
+          if (!oto || dur || bekle) return;
+          const sn = Math.max(3, Number(oto.dataset.oto) || 7);
+          s.style.setProperty("--sure", sn + "s");
+          void s.offsetWidth;
+          s.classList.add(P + "--kos");
+          t = setTimeout(() => git(i + 1), sn * 1000);
+        };
+        const git = (n, odak) => {
+          i = (n + kare.length) % kare.length;
+          kare.forEach((k, j) => {
+            k.classList.toggle(P + "-kare--aktif", j === i);
+            if (j === i) k.removeAttribute("aria-hidden"); else k.setAttribute("aria-hidden", "true");
+          });
+          dug.forEach((b, j) => { if (j === i) b.setAttribute("aria-current", "true"); else b.removeAttribute("aria-current"); });
+          if (no) no.textContent = f.format(i + 1);
+          if (altM) {
+            const e = dug[i].dataset.etiket || "";
+            altM.textContent = e;
+            if (alt) alt.hidden = !e;
+          }
+          if (odak) dug[i].focus();
+          kur();
+        };
+        dug.forEach((b, j) => {
+          b.addEventListener("click", () => git(j));
+          b.addEventListener("keydown", (e) => {
+            const rtl = getComputedStyle(s).direction === "rtl";
+            const ileri = e.key === (rtl ? "ArrowLeft" : "ArrowRight");
+            const geri = e.key === (rtl ? "ArrowRight" : "ArrowLeft");
+            if (ileri || geri) { e.preventDefault(); git(i + (ileri ? 1 : -1), true); }
+            else if (e.key === "Home") { e.preventDefault(); git(0, true); }
+            else if (e.key === "End") { e.preventDefault(); git(kare.length - 1, true); }
+          });
+        });
+        if (oto) {
+          if (az) oto.hidden = true;
+          const yaz = () => {
+            oto.setAttribute("aria-label", dur ? oto.dataset.oynat : oto.dataset.durdur);
+            oto.setAttribute("aria-pressed", String(dur));
+            const ik = oto.querySelector("span");
+            if (ik) ik.textContent = dur ? "play_arrow" : "pause";
+          };
+          oto.addEventListener("click", () => { dur = !dur; yaz(); kur(); });
+          s.addEventListener("pointerenter", () => { bekle = true; kur(); });
+          s.addEventListener("pointerleave", () => { bekle = false; kur(); });
+          s.addEventListener("focusin", () => { bekle = true; kur(); });
+          s.addEventListener("focusout", (e) => { if (!s.contains(e.relatedTarget)) { bekle = false; kur(); } });
+          yaz();
+        }
+        git(0);
+      };
+    document.querySelectorAll("." + P).forEach((s) => {
+      if (s.dataset.fbHazir) return;
+      s.dataset.fbHazir = "1";
+      sahneGecis(s, P, az);
+    });
+  })();
+</script>

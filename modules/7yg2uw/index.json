@@ -1,0 +1,62 @@
+{
+  "name": "Alt Site Haritası — harf dizini gibi yoğun bağlantı sütunları + yan bilgi paneli",
+  "description": "Geniş alanda tüm sayfalar, hizmetler ve yasal bağlantılar gazete sütunları gibi akan yoğun bir site haritası; yanında çerçeveli bilgi paneli: iletişim, çalışma saatleri, sosyal ve bülten formu; altta logo, tanıtım, telif, dil, başa dön. Gezinme sütun sütun değil, kesintisiz akan bir dizin (CSS columns); çok sayfalı, hizmet listesi uzun kurumsal siteler için. Sayfalar site sayfalarından, iletişim desing → site ayarı, sosyal wmSocialBar, dil seçici {{langbar}}. Metinler dil sözlüğü / lang.json; renkler desing + var(--mx-site-*); mantıksal CSS → RTL.",
+  "version": "1.0.0",
+  "icon": "account_tree",
+  "category": "footer",
+  "subCategory": "sitemap",
+  "tags": [
+    "footer",
+    "sitemap",
+    "dense",
+    "columns",
+    "rtl",
+    "fabrika"
+  ],
+  "desing": {
+    "max": "1200px",
+    "bosluk": "clamp(48px, 6vw, 80px)",
+    "yuvarlak": "18px",
+    "ust": "",
+    "baslik": "",
+    "metin": "",
+    "hakkinda": "",
+    "tel": "",
+    "eposta": "",
+    "adres": "",
+    "cta_ad": "",
+    "cta_url": "",
+    "rightsText": "",
+    "bg": "var(--mx-site-bg, #ffffff)",
+    "text": "var(--mx-site-text, #111318)",
+    "muted": "color-mix(in srgb, var(--mx-site-text, #111318) 68%, var(--mx-site-bg, #ffffff))",
+    "kartBg": "var(--mx-site-surface, #f6f7f9)",
+    "cizgi": "color-mix(in srgb, var(--mx-site-text, #111318) 12%, transparent)",
+    "accent": "var(--mx-site-primary, #2563eb)",
+    "accentInk": "color-mix(in srgb, var(--mx-site-primary, #2563eb) 70%, var(--mx-site-text, #111318))",
+    "accentText": "var(--mx-site-primary-contrast, #ffffff)",
+    "vurguBg": "var(--mx-site-primary, #2563eb)",
+    "vurguText": "var(--mx-site-primary-contrast, #ffffff)",
+    "logoH": "48px",
+    "bgcolor": "var(--mx-site-bg, #ffffff)",
+    "color": "var(--mx-site-text, #111318)"
+  },
+  "data": [],
+  "veri": {
+    "statik": true,
+    "dinamik": false,
+    "kaynak": "desing",
+    "alanlar": {
+      "hakkinda": "kısa tanıtım (dil sözlüğü; yoksa setting.description)",
+      "tel": "telefon (yoksa setting.phone)",
+      "eposta": "e-posta (yoksa setting.email)",
+      "adres": "adres (dil sözlüğü; yoksa setting.address)",
+      "services": "bağlantı listesi [{ name, href }] (footer-10)",
+      "hours": "çalışma saatleri [{ days, time }]",
+      "legal": "yasal bağlantılar [{ text, href }]",
+      "social": "sosyal hesaplar [{ ad, url }] (yoksa site ayarı)",
+      "rightsText": "telif satırı (yoksa @all-rights@)",
+      "nlTitle": "bülten başlığı (bülten formu yalnız başlık/metin + alıcı e-posta varken)"
+    }
+  }
+}

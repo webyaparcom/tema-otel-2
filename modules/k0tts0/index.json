@@ -1,0 +1,62 @@
+{
+  "name": "Çağrı Rezervasyon Çubuğu — fotoğrafa binen tarih + kişi şeridi",
+  "description": "Başlık bloğunun altında geniş görsel; alt kenarına binen yatay rezervasyon çubuğu: giriş / çıkış tarihi, misafir sayısı ve birincil düğme (btn1Url'e GET: checkin · checkout · guests). JS ile tarih sınırı, gece sayısı ve WhatsApp mesajına seçimler eklenir. Görsel yoksa çubuk kendi kartında. cagri-gorsel-zemin fotoğrafı yalnız atmosfer zemini yapar; bu modülde fotoğraf üstüne binen işlevsel rezervasyon formu var (tarih + kişi). Ailedeki düğme tabanlı çağrılardan farklı olarak ziyaretçi seçimini doğrudan rezervasyon motoruna taşır. Metinler dil sözlüğü, renkler desing + var(--mx-site-*), mantıksal CSS → RTL. Başlık da düğme de yoksa blok basılmaz.",
+  "version": "1.0.0",
+  "icon": "hotel",
+  "category": "cta",
+  "subCategory": "booking-bar",
+  "tags": [
+    "cta",
+    "booking",
+    "dates",
+    "hotel",
+    "rtl",
+    "fabrika"
+  ],
+  "desing": {
+    "max": "1200px",
+    "bosluk": "clamp(56px, 8vw, 104px)",
+    "yuvarlak": "18px",
+    "ust": "",
+    "baslik": "",
+    "metin": "",
+    "btn1Text": "",
+    "btn1Url": "",
+    "btn2Text": "",
+    "btn2Url": "",
+    "img": "",
+    "alt": "",
+    "ikon": "",
+    "not": "",
+    "number": "",
+    "numberText": "",
+    "waLabel": "",
+    "waTitle": "",
+    "waMessage": "",
+    "hours": "",
+    "hoursLabel": "",
+    "bg": "var(--mx-site-surface, #f6f7f9)",
+    "yaziRenk": "var(--mx-site-text, #111318)",
+    "muted": "color-mix(in srgb, var(--mx-site-text, #111318) 70%, var(--mx-site-surface, #f6f7f9))",
+    "kartBg": "var(--mx-site-bg, #ffffff)",
+    "cizgi": "color-mix(in srgb, var(--mx-site-text, #111318) 12%, transparent)",
+    "accent": "var(--mx-site-primary, #2563eb)",
+    "accentInk": "color-mix(in srgb, var(--mx-site-primary, #2563eb) 70%, var(--mx-site-text, #111318))",
+    "accentText": "var(--mx-site-primary-contrast, #ffffff)",
+    "vurguBg": "var(--mx-site-primary, #2563eb)",
+    "vurguText": "var(--mx-site-primary-contrast, #ffffff)",
+    "bgcolor": "var(--mx-site-surface, #f6f7f9)",
+    "color": "var(--mx-site-text, #111318)"
+  },
+  "data": [],
+  "veri": {
+    "statik": true,
+    "dinamik": false,
+    "kaynak": "desing",
+    "alanlar": {
+      "ikon": "Material Symbols adı (madde)",
+      "baslik": "dil sözlüğü (madde yazısı, zorunlu)",
+      "aciklama": "dil sözlüğü (madde alt yazısı)"
+    }
+  }
+}

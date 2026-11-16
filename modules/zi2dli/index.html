@@ -1,0 +1,184 @@
+<header class="modulex-ust-acilir{{fbsinif}}" {{fbetiket}}>
+  <div class="modulex-ust-acilir-ic">
+    {{fbbas}}
+    {{fbgovde}}
+  </div>
+</header>
+
+<style>
+  /* ust-acilir — Alt sayfa ağacı öne çıkar: kategori/alt sayfa sayısı çok olan siteler için geniş, iki sütunlu açılır kutular. */
+  .modulex-ust-acilir { box-sizing: border-box; width: 100%; padding: --bosluk-- 20px; background: --bg--; color: --text--; font-size: 1rem; line-height: 1.6; font-family: var(--mx-font-sans, inherit); overflow-wrap: break-word; }
+  .modulex-ust-acilir *, .modulex-ust-acilir *::before, .modulex-ust-acilir *::after { box-sizing: border-box; }
+  /* ham/css.css «* { font-size: 14px }» kalıtımı keser — modül içinde boyut üstten gelsin (ikon yazı tipi hariç) */
+  .modulex-ust-acilir :where(*:not(.material-symbols-outlined)) { font-size: inherit; }
+  /* aynı «*» kuralı font-weight 400 · line-height 1.2 · font-family de basar — modül içinde kalıtım */
+  .modulex-ust-acilir :where(*:not(.material-symbols-outlined)) { font-weight: inherit; line-height: inherit; font-family: inherit; }
+  .modulex-ust-acilir :where(h2, h3, h4, p, ul, ol, li, figure, blockquote, dl, dd) { margin: 0; }
+  .modulex-ust-acilir :where(ul, ol) { padding: 0; list-style: none; }
+  .modulex-ust-acilir img { display: block; max-width: 100%; }
+  /* <img width height> öznitelik yüksekliği CSS aspect-ratio'yu ezer — sıfır özgüllükle auto (modül sınıfının height'ı yine kazanır) */
+  :where(.modulex-ust-acilir) img { height: auto; }
+  .modulex-ust-acilir [hidden] { display: none !important; }
+  .modulex-ust-acilir :where(a, button, summary, [data-cevir]) { cursor: pointer; }
+  .modulex-ust-acilir :where(a, button, summary, [tabindex]):focus-visible { outline: 3px solid --accent--; outline-offset: 3px; }
+  .modulex-ust-acilir-ic { max-width: --max--; margin-inline: auto; }
+  .modulex-ust-acilir-bas { display: grid; gap: 12px; margin-block-end: clamp(32px, 4vw, 52px); }
+  .modulex-ust-acilir--bassiz .modulex-ust-acilir-bas { display: none; }
+  .modulex-ust-acilir-ust { color: --accentInk--; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+  .modulex-ust-acilir-baslik { font-family: var(--mx-font-heading, inherit); font-size: clamp(1.8rem, 3.4vw, 2.8rem); font-weight: 750; letter-spacing: -0.025em; line-height: 1.1; }
+  .modulex-ust-acilir-metin { color: --muted--; font-size: 1.05rem; line-height: 1.7; }
+  .modulex-ust-acilir-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-block-start: 8px; }
+  .modulex-ust-acilir-dugme { display: inline-flex; align-items: center; gap: 8px; min-height: 48px; padding: 12px 22px; border: 2px solid --accent--; border-radius: 999px; background: --accent--; color: --accentText--; font-weight: 700; text-decoration: none; transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease; }
+  .modulex-ust-acilir-dugme:hover { transform: translateY(-2px); }
+  .modulex-ust-acilir-dugme--ikincil { background: transparent; color: --text--; border-color: --cizgi--; }
+  .modulex-ust-acilir-dugme--ikincil:hover { border-color: --accent--; }
+  .modulex-ust-acilir-dugme .material-symbols-outlined { font-size: 20px; }
+
+  .modulex-ust-acilir { position: relative; z-index: 900; }
+  .modulex-ust-acilir-logo { display: inline-flex; flex: 0 1 auto; min-width: 0; align-items: center; color: inherit; text-decoration: none; }
+  /* dar ekranda geniş logo/uzun ad çubuğu taşırmasın: logo daralır (img max-width 100%), ad sarar */
+  .modulex-ust-acilir-logo img { width: auto; max-height: --logoH--; }
+  .modulex-ust-acilir-ad { font-family: var(--mx-font-heading, inherit); font-size: 1.3rem; font-weight: 800; letter-spacing: -0.02em; line-height: 1.1; }
+  .modulex-ust-acilir-oge { position: relative; display: inline-flex; align-items: center; min-height: 44px; color: inherit; font-weight: 600; text-decoration: none; transition: color 0.2s ease, background 0.2s ease; }
+  .modulex-ust-acilir-oge:hover, .modulex-ust-acilir-oge[aria-current="page"] { color: --accentInk--; }
+  .modulex-ust-acilir-cta { display: inline-flex; flex: none; align-items: center; gap: 6px; min-height: 44px; padding: 8px 18px; border-radius: 999px; background: --accent--; color: --accentText--; font-weight: 700; text-decoration: none; white-space: nowrap; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+  .modulex-ust-acilir-cta:hover { transform: translateY(-2px); box-shadow: 0 10px 20px -12px --accent--; }
+  .modulex-ust-acilir-cta .material-symbols-outlined, .modulex-ust-acilir-tel .material-symbols-outlined, .modulex-ust-acilir-posta .material-symbols-outlined { font-size: 18px; }
+  .modulex-ust-acilir-tel, .modulex-ust-acilir-posta { display: inline-flex; align-items: center; gap: 6px; color: inherit; text-decoration: none; white-space: nowrap; }
+  .modulex-ust-acilir-tel:hover, .modulex-ust-acilir-posta:hover { color: --accentInk--; }
+  .modulex-ust-acilir-dil:empty { display: none; }
+  .modulex-ust-acilir-ac { display: none; align-items: center; gap: 10px; min-width: 46px; min-height: 46px; padding: 0 12px; border: 1px solid --cizgi--; border-radius: 999px; background: transparent; color: inherit; font: inherit; font-weight: 700; }
+  .modulex-ust-acilir-ac-ikon { display: grid; gap: 4px; width: 20px; }
+  .modulex-ust-acilir-ac-ikon span { display: block; height: 2px; border-radius: 2px; background: currentColor; transition: transform 0.3s ease, opacity 0.3s ease; }
+  .modulex-ust-acilir--acik .modulex-ust-acilir-ac-ikon span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .modulex-ust-acilir--acik .modulex-ust-acilir-ac-ikon span:nth-child(2) { opacity: 0; }
+  .modulex-ust-acilir--acik .modulex-ust-acilir-ac-ikon span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+  .modulex-ust-acilir-kapat { display: inline-grid; place-items: center; width: 46px; height: 46px; border: 1px solid --cizgi--; border-radius: 50%; background: transparent; color: inherit; }
+  .modulex-ust-acilir-perde { position: fixed; inset: 0; z-index: 1; background: color-mix(in srgb, --text-- 45%, transparent); animation: modulex-ust-acilir-sol 0.3s ease both; }
+  @keyframes modulex-ust-acilir-sol { from { opacity: 0; } to { opacity: 1; } }
+
+  .modulex-ust-acilir-panel { display: grid; gap: 14px; }
+  @media (max-width: 1024px) {
+    .modulex-ust-acilir--js .modulex-ust-acilir-nav, .modulex-ust-acilir--js .modulex-ust-acilir-genis { display: none; }
+    .modulex-ust-acilir--js .modulex-ust-acilir-ac { display: inline-flex; }
+    .modulex-ust-acilir-panel { position: absolute; inset-inline: 0; inset-block-start: 100%; padding: 16px 20px 24px; border-block-end: 1px solid --cizgi--; background: --bg--; box-shadow: 0 24px 40px -28px color-mix(in srgb, --text-- 55%, transparent); animation: modulex-ust-acilir-in 0.3s ease both; }
+    .modulex-ust-acilir-pliste { display: grid; }
+    .modulex-ust-acilir-pliste .modulex-ust-acilir-oge { width: 100%; min-height: 50px; border-block-end: 1px solid --cizgi--; font-size: 1.05rem; }
+    .modulex-ust-acilir-palt { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; }
+  }
+  @media (min-width: 1025px) {
+    .modulex-ust-acilir-panel { display: none !important; }
+  }
+  @keyframes modulex-ust-acilir-in { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: none; } }
+
+  .modulex-ust-acilir-dal { position: relative; display: flex; flex-wrap: wrap; align-items: center; }
+  .modulex-ust-acilir-dal-ac { display: inline-grid; place-items: center; width: 32px; height: 32px; margin-inline-start: 2px; padding: 0; border: 0; border-radius: 8px; background: transparent; color: inherit; }
+  .modulex-ust-acilir-dal-ac .material-symbols-outlined { font-size: 20px; transition: transform 0.2s ease; }
+  .modulex-ust-acilir-dal--acik > .modulex-ust-acilir-dal-ac .material-symbols-outlined { transform: rotate(180deg); }
+  .modulex-ust-acilir-dal--aktif > .modulex-ust-acilir-oge { color: --accentInk--; }
+  .modulex-ust-acilir-altliste { position: absolute; inset-block-start: 100%; inset-inline-start: 0; z-index: 5; display: none; gap: 2px; min-width: 230px; padding: 8px; border: 1px solid --cizgi--; border-radius: 14px; background: --bg--; color: --text--; box-shadow: 0 22px 44px -26px color-mix(in srgb, --text-- 55%, transparent); text-align: start; }
+  .modulex-ust-acilir-dal:hover > .modulex-ust-acilir-altliste, .modulex-ust-acilir-dal:focus-within > .modulex-ust-acilir-altliste, .modulex-ust-acilir-dal--acik > .modulex-ust-acilir-altliste { display: grid; }
+  .modulex-ust-acilir-aoge { display: flex; align-items: center; min-height: 42px; padding: 6px 12px; border-radius: 9px; color: inherit; font-weight: 600; text-decoration: none; white-space: nowrap; text-transform: none; letter-spacing: 0; }
+  .modulex-ust-acilir-aoge:hover, .modulex-ust-acilir-aoge[aria-current="page"] { background: color-mix(in srgb, --accent-- 12%, --bg--); color: --accentInk--; }
+  .modulex-ust-acilir-panel .modulex-ust-acilir-altliste, .modulex-ust-acilir-pliste .modulex-ust-acilir-altliste { position: static; display: grid; width: 100%; min-width: 0; padding: 0 0 10px; padding-inline-start: 18px; border: 0; border-radius: 0; background: transparent; color: inherit; box-shadow: none; }
+  .modulex-ust-acilir-panel .modulex-ust-acilir-dal-ac, .modulex-ust-acilir-pliste .modulex-ust-acilir-dal-ac { display: none; }
+  .modulex-ust-acilir-panel .modulex-ust-acilir-aoge { min-height: 40px; color: inherit; font-size: 0.95rem; white-space: normal; }
+  @media (max-width: 1024px) {
+    .modulex-ust-acilir:not(.modulex-ust-acilir--js) .modulex-ust-acilir-altliste { position: static; display: grid; box-shadow: none; }
+  }
+
+  .modulex-ust-acilir-cubuk { display: flex; align-items: center; justify-content: space-between; gap: 16px 28px; padding-block: 14px; }
+  .modulex-ust-acilir-liste { display: flex; flex-wrap: wrap; gap: 4px 18px; }
+  .modulex-ust-acilir-liste .modulex-ust-acilir-dal-ac { border: 1px solid --cizgi--; border-radius: 50%; }
+  .modulex-ust-acilir-liste .modulex-ust-acilir-dal-ac:hover { border-color: --accent--; }
+  .modulex-ust-acilir-liste .modulex-ust-acilir-altliste { grid-template-columns: repeat(2, minmax(170px, 1fr)); min-width: 400px; padding: 14px; border-block-start: 3px solid --accent--; border-radius: 4px 4px 18px 18px; }
+  .modulex-ust-acilir-son, .modulex-ust-acilir-genis { display: flex; align-items: center; gap: 12px; }
+
+  :is([lang="ar"], [lang="fa"], [lang="he"], [lang="ur"]) .modulex-ust-acilir :is(.modulex-ust-acilir-baslik, .modulex-ust-acilir-ust, h3, h4, strong) { letter-spacing: 0; }
+  :is([lang="ar"], [lang="fa"], [lang="he"], [lang="ur"]) .modulex-ust-acilir-baslik { line-height: 1.35; }
+  @media (max-width: 768px) {
+    .modulex-ust-acilir { padding-inline: 16px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .modulex-ust-acilir *, .modulex-ust-acilir *::before, .modulex-ust-acilir *::after { animation: none !important; transition: none !important; }
+  }
+</style>
+<script>
+  (() => {
+    const P = "modulex-ust-acilir";
+    const az = !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+    const cekmece = (s, P) => {
+          const ac = s.querySelector("." + P + "-ac");
+          const panel = ac ? document.getElementById(ac.getAttribute("aria-controls")) : null;
+          if (!ac || !panel) return;
+          s.classList.add(P + "--js");
+          const perde = s.querySelector("." + P + "-perde");
+          const modal = panel.getAttribute("aria-modal") === "true";
+          const kok = document.documentElement;
+          const kapa = (odak) => {
+            if (panel.hidden) return;
+            panel.hidden = true;
+            if (perde) perde.hidden = true;
+            ac.setAttribute("aria-expanded", "false");
+            s.classList.remove(P + "--acik");
+            if (modal) kok.style.overflow = "";
+            if (odak) ac.focus();
+          };
+          const aci = () => {
+            panel.hidden = false;
+            if (perde) perde.hidden = false;
+            ac.setAttribute("aria-expanded", "true");
+            s.classList.add(P + "--acik");
+            if (modal) kok.style.overflow = "hidden";
+            const ilk = panel.querySelector("a[href], button");
+            if (ilk) ilk.focus();
+          };
+          ac.addEventListener("click", () => (panel.hidden ? aci() : kapa(true)));
+          panel.addEventListener("click", (e) => {
+            if (e.target.closest("." + P + "-kapat")) kapa(true);
+            else if (e.target.closest("a[href]")) kapa(false);
+          });
+          if (perde) perde.addEventListener("click", () => kapa(true));
+          document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !panel.hidden) kapa(true); });
+          if (modal) {
+            panel.addEventListener("keydown", (e) => {
+              if (e.key !== "Tab") return;
+              const o = [...panel.querySelectorAll("a[href], button:not([disabled])")].filter((x) => x.offsetParent !== null);
+              if (!o.length) return;
+              if (e.shiftKey && document.activeElement === o[0]) { e.preventDefault(); o[o.length - 1].focus(); }
+              else if (!e.shiftKey && document.activeElement === o[o.length - 1]) { e.preventDefault(); o[0].focus(); }
+            });
+          }
+          const g = Number(ac.dataset.genis);
+          if (g && window.matchMedia) window.matchMedia(`(min-width: ${g}px)`).addEventListener("change", (m) => { if (m.matches) kapa(false); });
+        };
+    const altmenu = (s, P) => {
+          const dallar = [...s.querySelectorAll("." + P + "-dal")];
+          if (!dallar.length) return;
+          const kapa = (d, odak) => {
+            const b = d.querySelector(":scope > ." + P + "-dal-ac");
+            if (!d.classList.contains(P + "-dal--acik")) return;
+            d.classList.remove(P + "-dal--acik");
+            b.setAttribute("aria-expanded", "false");
+            if (odak) b.focus();
+          };
+          dallar.forEach((d) => {
+            const b = d.querySelector(":scope > ." + P + "-dal-ac");
+            if (!b) return;
+            b.addEventListener("click", () => {
+              const acik = d.classList.contains(P + "-dal--acik");
+              dallar.forEach((x) => kapa(x, false));
+              if (!acik) { d.classList.add(P + "-dal--acik"); b.setAttribute("aria-expanded", "true"); }
+            });
+            d.addEventListener("keydown", (e) => { if (e.key === "Escape") kapa(d, true); });
+          });
+          document.addEventListener("click", (e) => { dallar.forEach((d) => { if (!d.contains(e.target)) kapa(d, false); }); });
+        };
+    document.querySelectorAll("." + P).forEach((s) => {
+      if (s.dataset.fbHazir) return;
+      s.dataset.fbHazir = "1";
+      cekmece(s, P, az);
+      altmenu(s, P, az);
+    });
+  })();
+</script>

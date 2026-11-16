@@ -1,0 +1,137 @@
+<section class="modulex-yorum-konuk-defteri{{fbsinif}}" {{fbetiket}}>
+  <div class="modulex-yorum-konuk-defteri-ic">
+    {{fbbas}}
+    {{fbgovde}}
+  </div>
+</section>
+
+<style>
+  /* yorum-konuk-defteri — Kitap/defter metaforu ve yaprak çevirme etkileşimi: yorum-mektup'un kâğıt ızgarasından (hepsi aynı anda) ve yorum-portre-ray'in kaydırmalı rayından farklı olarak bir seferde bir açılım okunur; sayfa konumu (3–4 / 6) görünür. */
+  .modulex-yorum-konuk-defteri { box-sizing: border-box; width: 100%; padding: --bosluk-- 20px; background: --bg--; color: --text--; font-size: 1rem; line-height: 1.6; font-family: var(--mx-font-sans, inherit); overflow-wrap: break-word; }
+  .modulex-yorum-konuk-defteri *, .modulex-yorum-konuk-defteri *::before, .modulex-yorum-konuk-defteri *::after { box-sizing: border-box; }
+  /* ham/css.css «* { font-size: 14px }» kalıtımı keser — modül içinde boyut üstten gelsin (ikon yazı tipi hariç) */
+  .modulex-yorum-konuk-defteri :where(*:not(.material-symbols-outlined)) { font-size: inherit; }
+  /* aynı «*» kuralı font-weight 400 · line-height 1.2 · font-family de basar — modül içinde kalıtım */
+  .modulex-yorum-konuk-defteri :where(*:not(.material-symbols-outlined)) { font-weight: inherit; line-height: inherit; font-family: inherit; }
+  .modulex-yorum-konuk-defteri :where(h2, h3, h4, p, ul, ol, li, figure, blockquote, dl, dd) { margin: 0; }
+  .modulex-yorum-konuk-defteri :where(ul, ol) { padding: 0; list-style: none; }
+  .modulex-yorum-konuk-defteri img { display: block; max-width: 100%; }
+  /* <img width height> öznitelik yüksekliği CSS aspect-ratio'yu ezer — sıfır özgüllükle auto (modül sınıfının height'ı yine kazanır) */
+  :where(.modulex-yorum-konuk-defteri) img { height: auto; }
+  .modulex-yorum-konuk-defteri [hidden] { display: none !important; }
+  .modulex-yorum-konuk-defteri :where(a, button, summary, [data-cevir]) { cursor: pointer; }
+  .modulex-yorum-konuk-defteri :where(a, button, summary, [tabindex]):focus-visible { outline: 3px solid --accent--; outline-offset: 3px; }
+  .modulex-yorum-konuk-defteri-ic { max-width: --max--; margin-inline: auto; }
+  .modulex-yorum-konuk-defteri-bas { display: grid; gap: 12px; margin-block-end: clamp(32px, 4vw, 52px); }
+  .modulex-yorum-konuk-defteri--bassiz .modulex-yorum-konuk-defteri-bas { display: none; }
+  .modulex-yorum-konuk-defteri-ust { color: --accentInk--; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+  .modulex-yorum-konuk-defteri-baslik { font-family: var(--mx-font-heading, inherit); font-size: clamp(1.8rem, 3.4vw, 2.8rem); font-weight: 750; letter-spacing: -0.025em; line-height: 1.1; }
+  .modulex-yorum-konuk-defteri-metin { color: --muted--; font-size: 1.05rem; line-height: 1.7; }
+  .modulex-yorum-konuk-defteri-bas { max-width: 780px; margin-inline: auto; text-align: center; justify-items: center; }
+  .modulex-yorum-konuk-defteri-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-block-start: 8px; }
+  .modulex-yorum-konuk-defteri-dugme { display: inline-flex; align-items: center; gap: 8px; min-height: 48px; padding: 12px 22px; border: 2px solid --accent--; border-radius: 999px; background: --accent--; color: --accentText--; font-weight: 700; text-decoration: none; transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease; }
+  .modulex-yorum-konuk-defteri-dugme:hover { transform: translateY(-2px); }
+  .modulex-yorum-konuk-defteri-dugme--ikincil { background: transparent; color: --text--; border-color: --cizgi--; }
+  .modulex-yorum-konuk-defteri-dugme--ikincil:hover { border-color: --accent--; }
+  .modulex-yorum-konuk-defteri-dugme .material-symbols-outlined { font-size: 20px; }
+
+  .modulex-yorum-konuk-defteri-ad { font-weight: 700; }
+  .modulex-yorum-konuk-defteri-kisi { display: grid; gap: 2px; min-width: 0; }
+  .modulex-yorum-konuk-defteri-unvan { color: --muted--; font-size: 0.88rem; line-height: 1.45; }
+  .modulex-yorum-konuk-defteri-puan { display: flex; gap: 2px; color: --yildiz--; }
+  .modulex-yorum-konuk-defteri-puan .material-symbols-outlined { font-size: 20px; font-variation-settings: "FILL" 1; }
+  .modulex-yorum-konuk-defteri-yildiz--bos { opacity: 0.3; }
+  .modulex-yorum-konuk-defteri-avatar { flex: none; width: 52px; height: 52px; border-radius: 50%; object-fit: cover; }
+  .modulex-yorum-konuk-defteri-harf { display: inline-grid; place-items: center; background: color-mix(in srgb, --accent-- 18%, --kartBg--); color: --accentInk--; font-weight: 800; letter-spacing: 0.02em; }
+  .modulex-yorum-konuk-defteri-yazar { display: flex; align-items: center; gap: 12px; }
+
+  .modulex-yorum-konuk-defteri-defter { display: grid; gap: 22px; max-width: 1040px; margin-inline: auto; }
+  .modulex-yorum-konuk-defteri-cilt { position: relative; padding: clamp(10px, 1.6vw, 18px); border-radius: --yuvarlak--; background: color-mix(in srgb, --accent-- 72%, --text--); box-shadow: 0 34px 54px -40px color-mix(in srgb, --text-- 85%, transparent); }
+  .modulex-yorum-konuk-defteri-cilt::after { content: ""; position: absolute; inset-block-start: -8px; inset-inline-end: 14%; width: 22px; height: 78px; background: --yildiz--; clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 80%, 0 100%); }
+  .modulex-yorum-konuk-defteri-sayfalar { position: relative; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); perspective: 1800px; }
+  .modulex-yorum-konuk-defteri-sayfalar::before { content: ""; position: absolute; inset-block: 0; inset-inline-start: 50%; z-index: 1; width: 2px; margin-inline-start: -1px; background: color-mix(in srgb, --text-- 26%, transparent); }
+  .modulex-yorum-konuk-defteri-yaprak { display: grid; }
+  .modulex-yorum-konuk-defteri-sayfa { position: relative; display: grid; align-content: start; gap: 14px; min-height: 400px; padding: clamp(26px, 4vw, 48px) clamp(22px, 3.4vw, 44px) 58px; background-color: --kartBg--; background-image: radial-gradient(circle, color-mix(in srgb, --text-- 13%, transparent) 1px, transparent 1.5px); background-size: 22px 22px; transition: background-color 0.3s ease; }
+  .modulex-yorum-konuk-defteri-yaprak:nth-child(odd) .modulex-yorum-konuk-defteri-sayfa { border-start-start-radius: 6px; border-end-start-radius: 6px; box-shadow: inset -28px 0 30px -30px color-mix(in srgb, --text-- 70%, transparent); }
+  .modulex-yorum-konuk-defteri-yaprak:nth-child(even) .modulex-yorum-konuk-defteri-sayfa { border-start-end-radius: 6px; border-end-end-radius: 6px; box-shadow: inset 28px 0 30px -30px color-mix(in srgb, --text-- 70%, transparent); }
+  [dir="rtl"] .modulex-yorum-konuk-defteri-yaprak:nth-child(odd) .modulex-yorum-konuk-defteri-sayfa { box-shadow: inset 28px 0 30px -30px color-mix(in srgb, --text-- 70%, transparent); }
+  [dir="rtl"] .modulex-yorum-konuk-defteri-yaprak:nth-child(even) .modulex-yorum-konuk-defteri-sayfa { box-shadow: inset -28px 0 30px -30px color-mix(in srgb, --text-- 70%, transparent); }
+  .modulex-yorum-konuk-defteri-tarih { color: --muted--; font-size: 0.85rem; font-style: italic; text-align: end; }
+  .modulex-yorum-konuk-defteri-kbaslik { font-family: var(--mx-font-heading, inherit); font-size: 1.25rem; font-weight: 750; line-height: 1.3; }
+  .modulex-yorum-konuk-defteri-alinti { font-family: var(--mx-font-heading, Georgia, serif); font-size: clamp(1.05rem, 1.6vw, 1.2rem); font-style: italic; line-height: 1.75; }
+  .modulex-yorum-konuk-defteri-imza { margin-block-start: 6px; color: --accentInk--; font-family: "Segoe Script", "Bradley Hand", "Brush Script MT", cursive; font-size: 1.6rem; line-height: 1.2; }
+  .modulex-yorum-konuk-defteri-unvan { margin-block-start: -8px; }
+  .modulex-yorum-konuk-defteri-sayfano { position: absolute; inset-block-end: 20px; inset-inline: 0; color: --muted--; font-size: 0.82rem; font-variant-numeric: tabular-nums; text-align: center; }
+  .modulex-yorum-konuk-defteri-gezinti { display: flex; align-items: center; justify-content: center; gap: 18px; }
+  .modulex-yorum-konuk-defteri:not(.modulex-yorum-konuk-defteri--js) .modulex-yorum-konuk-defteri-gezinti { display: none; }
+  .modulex-yorum-konuk-defteri-ok { display: inline-grid; place-items: center; width: 50px; height: 50px; border: 1px solid --cizgi--; border-radius: 50%; background: --bg--; color: --text--; transition: background-color 0.25s ease, color 0.25s ease, opacity 0.25s ease; }
+  .modulex-yorum-konuk-defteri-ok:hover:not(:disabled) { background: --accent--; color: --accentText--; }
+  .modulex-yorum-konuk-defteri-ok:disabled { opacity: 0.35; cursor: default; }
+  .modulex-yorum-konuk-defteri-konum { min-width: 7ch; color: --text--; font-weight: 700; font-variant-numeric: tabular-nums; text-align: center; }
+  .modulex-yorum-konuk-defteri-yaprak--ileri .modulex-yorum-konuk-defteri-sayfa { animation: modulex-yorum-konuk-defteri-ileri 0.55s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+  .modulex-yorum-konuk-defteri-yaprak--geri .modulex-yorum-konuk-defteri-sayfa { animation: modulex-yorum-konuk-defteri-geri 0.55s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+  [dir="rtl"] .modulex-yorum-konuk-defteri-yaprak--ileri .modulex-yorum-konuk-defteri-sayfa { animation-name: modulex-yorum-konuk-defteri-geri; }
+  [dir="rtl"] .modulex-yorum-konuk-defteri-yaprak--geri .modulex-yorum-konuk-defteri-sayfa { animation-name: modulex-yorum-konuk-defteri-ileri; }
+  @keyframes modulex-yorum-konuk-defteri-ileri { from { opacity: 0; transform: rotateY(-16deg) translateX(22px); } to { opacity: 1; transform: none; } }
+  @keyframes modulex-yorum-konuk-defteri-geri { from { opacity: 0; transform: rotateY(16deg) translateX(-22px); } to { opacity: 1; transform: none; } }
+  @media (max-width: 768px) {
+    .modulex-yorum-konuk-defteri-sayfalar { grid-template-columns: minmax(0, 1fr); }
+    .modulex-yorum-konuk-defteri-sayfalar::before { display: none; }
+    .modulex-yorum-konuk-defteri-sayfa { min-height: 0; padding-block-end: 52px; }
+    .modulex-yorum-konuk-defteri:not(.modulex-yorum-konuk-defteri--js) .modulex-yorum-konuk-defteri-yaprak + .modulex-yorum-konuk-defteri-yaprak { margin-block-start: 10px; }
+  }
+
+  :is([lang="ar"], [lang="fa"], [lang="he"], [lang="ur"]) .modulex-yorum-konuk-defteri :is(.modulex-yorum-konuk-defteri-baslik, .modulex-yorum-konuk-defteri-ust, h3, h4, strong) { letter-spacing: 0; }
+  :is([lang="ar"], [lang="fa"], [lang="he"], [lang="ur"]) .modulex-yorum-konuk-defteri-baslik { line-height: 1.35; }
+  @media (max-width: 768px) {
+    .modulex-yorum-konuk-defteri { padding-inline: 16px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .modulex-yorum-konuk-defteri *, .modulex-yorum-konuk-defteri *::before, .modulex-yorum-konuk-defteri *::after { animation: none !important; transition: none !important; }
+  }
+</style>
+<script>
+  (() => {
+    const P = "modulex-yorum-konuk-defteri";
+    const az = !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+    const defter = (s, P, az) => {
+        const L = [...s.querySelectorAll("." + P + "-yaprak")];
+        const g = s.querySelector("." + P + "-gezinti");
+        if (L.length < 2 || !g) return;
+        s.classList.add(P + "--js");
+        const geri = g.querySelector("[data-yon=geri]");
+        const ileri = g.querySelector("[data-yon=ileri]");
+        const konum = g.querySelector("." + P + "-konum");
+        const mq = window.matchMedia ? window.matchMedia("(max-width: 768px)") : null;
+        let f = null;
+        try { f = new Intl.NumberFormat(document.documentElement.lang || undefined); } catch (e) { f = null; }
+        const say = (n) => (f ? f.format(n) : String(n));
+        let i = 0;
+        const adim = () => (mq && mq.matches ? 1 : 2);
+        const goster = (yon) => {
+          const a = adim();
+          i = Math.max(0, Math.min(i, L.length - 1));
+          i -= i % a;
+          L.forEach((x, j) => {
+            const gor = j >= i && j < i + a;
+            x.hidden = !gor;
+            x.classList.remove(P + "-yaprak--ileri", P + "-yaprak--geri");
+            if (gor && yon && !az) { void x.offsetWidth; x.classList.add(P + "-yaprak--" + yon); }
+          });
+          const son = Math.min(i + a, L.length);
+          if (konum) konum.textContent = (son - i > 1 ? say(i + 1) + "–" + say(son) : say(i + 1)) + " / " + say(L.length);
+          if (geri) geri.disabled = i === 0;
+          if (ileri) ileri.disabled = i + a >= L.length;
+        };
+        if (geri) geri.addEventListener("click", () => { i -= adim(); goster("geri"); });
+        if (ileri) ileri.addEventListener("click", () => { i += adim(); goster("ileri"); });
+        if (mq && mq.addEventListener) mq.addEventListener("change", () => goster());
+        goster();
+      };
+    document.querySelectorAll("." + P).forEach((s) => {
+      if (s.dataset.fbHazir) return;
+      s.dataset.fbHazir = "1";
+      defter(s, P, az);
+    });
+  })();
+</script>

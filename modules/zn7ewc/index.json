@@ -1,0 +1,53 @@
+{
+  "name": "Sayaç Puan Kırılım — puan rozeti + ölçek üstünde imleçler",
+  "description": "İlk rakam köşesi kesik vurgu rozetinde dev puan (konaklama sitelerindeki «9,6» dili); kalanlar 0…tavan ölçek cetvelleri: çentikli ray üzerinde oran kadar kayan halka imleç ve ince iz. Görünür olunca imleçler sıfırdan yerine kayar. sayac-cubuk kalın dolgu çubuğu, sayac-dev-tek tipografik manşet kurar; bu modül bir rozet + çentikli ölçek üzerinde imleç (dot plot) iskeletidir — değer dolgu değil konum olarak okunur (otel puan kırılımı: temizlik/konum/hizmet). Sayılar sayfa diliyle biçimlenir (Intl), metinler dil sözlüğü, renkler desing + var(--mx-site-*), mantıksal CSS → RTL. Veri yoksa blok basılmaz.",
+  "version": "1.0.0",
+  "icon": "hotel_class",
+  "category": "stats",
+  "subCategory": "score-breakdown",
+  "tags": [
+    "stats",
+    "score",
+    "breakdown",
+    "dot-plot",
+    "badge",
+    "rtl",
+    "fabrika"
+  ],
+  "desing": {
+    "max": "1200px",
+    "bosluk": "clamp(56px, 8vw, 104px)",
+    "yuvarlak": "18px",
+    "ust": "",
+    "baslik": "",
+    "metin": "",
+    "bg": "var(--mx-site-bg, #ffffff)",
+    "text": "var(--mx-site-text, #111318)",
+    "muted": "color-mix(in srgb, var(--mx-site-text, #111318) 68%, var(--mx-site-bg, #ffffff))",
+    "kartBg": "var(--mx-site-surface, #f6f7f9)",
+    "cizgi": "color-mix(in srgb, var(--mx-site-text, #111318) 12%, transparent)",
+    "accent": "var(--mx-site-primary, #2563eb)",
+    "accentInk": "color-mix(in srgb, var(--mx-site-primary, #2563eb) 70%, var(--mx-site-text, #111318))",
+    "accentText": "var(--mx-site-primary-contrast, #ffffff)",
+    "vurguBg": "var(--mx-site-primary, #2563eb)",
+    "vurguText": "var(--mx-site-primary-contrast, #ffffff)",
+    "bgcolor": "var(--mx-site-bg, #ffffff)",
+    "color": "var(--mx-site-text, #111318)"
+  },
+  "data": [],
+  "veri": {
+    "statik": true,
+    "dinamik": false,
+    "kaynak": "data",
+    "alanlar": {
+      "sayi": "sayı (zorunlu; 1200 · \"4.9\")",
+      "onek": "önek (dil sözlüğü; ör. «%»)",
+      "sonek": "sonek (dil sözlüğü; ör. «+», «/5»)",
+      "etiket": "etiket (dil sözlüğü, zorunlu)",
+      "metin": "kısa not (dil sözlüğü)",
+      "ikon": "Material Symbols adı",
+      "ondalik": "ondalık basamak (yoksa sayıdan)",
+      "max": "oran tavanı (halka/çubuk/dolgu; yoksa % → 100, değilse listedeki en büyük)"
+    }
+  }
+}

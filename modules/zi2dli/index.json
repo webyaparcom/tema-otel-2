@@ -1,0 +1,52 @@
+{
+  "name": "Üst Açılır — iki sütunlu geniş alt menü kutuları",
+  "description": "Alt sayfası olan her öğenin yanında yuvarlak açma düğmesi; açılan kutu iki sütunlu, üstü vurgu çizgili geniş bir panel. Logo başta, dil ve düğme sonda. Dar ekranda alt sayfalar girintili açılır listede. Alt sayfa ağacı öne çıkar: kategori/alt sayfa sayısı çok olan siteler için geniş, iki sütunlu açılır kutular. Sayfalar site sayfalarından, dil seçici {{langbar}}, logo {{logo}}. Mobil menü erişilebilir (aria-expanded, Esc, odak). Renkler desing + var(--mx-site-*); mantıksal CSS → RTL.",
+  "version": "1.0.0",
+  "icon": "expand_circle_down",
+  "category": "menu",
+  "subCategory": "wide-dropdowns",
+  "tags": [
+    "menu",
+    "dropdown",
+    "two-column",
+    "catalog",
+    "subpages",
+    "rtl",
+    "fabrika"
+  ],
+  "desing": {
+    "max": "1200px",
+    "bosluk": "0px",
+    "yuvarlak": "18px",
+    "ust": "",
+    "baslik": "",
+    "metin": "",
+    "cta_ad": "",
+    "cta_url": "",
+    "tel": "",
+    "logoimg": "",
+    "bg": "var(--mx-site-bg, #ffffff)",
+    "text": "var(--mx-site-text, #111318)",
+    "muted": "color-mix(in srgb, var(--mx-site-text, #111318) 68%, var(--mx-site-bg, #ffffff))",
+    "kartBg": "var(--mx-site-surface, #f6f7f9)",
+    "cizgi": "color-mix(in srgb, var(--mx-site-text, #111318) 12%, transparent)",
+    "accent": "var(--mx-site-primary, #2563eb)",
+    "accentInk": "color-mix(in srgb, var(--mx-site-primary, #2563eb) 70%, var(--mx-site-text, #111318))",
+    "accentText": "var(--mx-site-primary-contrast, #ffffff)",
+    "vurguBg": "var(--mx-site-primary, #2563eb)",
+    "vurguText": "var(--mx-site-primary-contrast, #ffffff)",
+    "logoH": "44px",
+    "bgcolor": "var(--mx-site-bg, #ffffff)",
+    "color": "var(--mx-site-text, #111318)"
+  },
+  "data": [],
+  "veri": {
+    "statik": true,
+    "dinamik": false,
+    "kaynak": "data",
+    "alanlar": {
+      "name": "ek bağlantı adı (dil sözlüğü)",
+      "url": "iç yol ya da dış adres (dış adres yeni sekmede)"
+    }
+  }
+}

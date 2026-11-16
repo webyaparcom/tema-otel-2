@@ -1,0 +1,137 @@
+<section class="modulex-cagri-rezervasyon-cubugu{{fbsinif}}" {{fbetiket}}>
+  <div class="modulex-cagri-rezervasyon-cubugu-ic">
+    {{fbbas}}
+    {{fbgovde}}
+  </div>
+</section>
+
+<style>
+  /* cagri-rezervasyon-cubugu — cagri-gorsel-zemin fotoğrafı yalnız atmosfer zemini yapar; bu modülde fotoğraf üstüne binen işlevsel rezervasyon formu var (tarih + kişi). Ailedeki düğme tabanlı çağrılardan farklı olarak ziyaretçi seçimini doğrudan rezervasyon motoruna taşır. */
+  .modulex-cagri-rezervasyon-cubugu { box-sizing: border-box; width: 100%; padding: --bosluk-- 20px; background: --bg--; color: --yaziRenk--; font-size: 1rem; line-height: 1.6; font-family: var(--mx-font-sans, inherit); overflow-wrap: break-word; }
+  .modulex-cagri-rezervasyon-cubugu *, .modulex-cagri-rezervasyon-cubugu *::before, .modulex-cagri-rezervasyon-cubugu *::after { box-sizing: border-box; }
+  /* ham/css.css «* { font-size: 14px }» kalıtımı keser — modül içinde boyut üstten gelsin (ikon yazı tipi hariç) */
+  .modulex-cagri-rezervasyon-cubugu :where(*:not(.material-symbols-outlined)) { font-size: inherit; }
+  /* aynı «*» kuralı font-weight 400 · line-height 1.2 · font-family de basar — modül içinde kalıtım */
+  .modulex-cagri-rezervasyon-cubugu :where(*:not(.material-symbols-outlined)) { font-weight: inherit; line-height: inherit; font-family: inherit; }
+  .modulex-cagri-rezervasyon-cubugu :where(h2, h3, h4, p, ul, ol, li, figure, blockquote, dl, dd) { margin: 0; }
+  .modulex-cagri-rezervasyon-cubugu :where(ul, ol) { padding: 0; list-style: none; }
+  .modulex-cagri-rezervasyon-cubugu img { display: block; max-width: 100%; }
+  /* <img width height> öznitelik yüksekliği CSS aspect-ratio'yu ezer — sıfır özgüllükle auto (modül sınıfının height'ı yine kazanır) */
+  :where(.modulex-cagri-rezervasyon-cubugu) img { height: auto; }
+  .modulex-cagri-rezervasyon-cubugu [hidden] { display: none !important; }
+  .modulex-cagri-rezervasyon-cubugu :where(a, button, summary, [data-cevir]) { cursor: pointer; }
+  .modulex-cagri-rezervasyon-cubugu :where(a, button, summary, [tabindex]):focus-visible { outline: 3px solid --accent--; outline-offset: 3px; }
+  .modulex-cagri-rezervasyon-cubugu-ic { max-width: --max--; margin-inline: auto; }
+  .modulex-cagri-rezervasyon-cubugu-bas { display: grid; gap: 12px; margin-block-end: clamp(32px, 4vw, 52px); }
+  .modulex-cagri-rezervasyon-cubugu--bassiz .modulex-cagri-rezervasyon-cubugu-bas { display: none; }
+  .modulex-cagri-rezervasyon-cubugu-ust { color: --accentInk--; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+  .modulex-cagri-rezervasyon-cubugu-baslik { font-family: var(--mx-font-heading, inherit); font-size: clamp(1.8rem, 3.4vw, 2.8rem); font-weight: 750; letter-spacing: -0.025em; line-height: 1.1; }
+  .modulex-cagri-rezervasyon-cubugu-metin { color: --muted--; font-size: 1.05rem; line-height: 1.7; }
+  .modulex-cagri-rezervasyon-cubugu-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-block-start: 8px; }
+  .modulex-cagri-rezervasyon-cubugu-dugme { display: inline-flex; align-items: center; gap: 8px; min-height: 48px; padding: 12px 22px; border: 2px solid --accent--; border-radius: 999px; background: --accent--; color: --accentText--; font-weight: 700; text-decoration: none; transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease; }
+  .modulex-cagri-rezervasyon-cubugu-dugme:hover { transform: translateY(-2px); }
+  .modulex-cagri-rezervasyon-cubugu-dugme--ikincil { background: transparent; color: --yaziRenk--; border-color: --cizgi--; }
+  .modulex-cagri-rezervasyon-cubugu-dugme--ikincil:hover { border-color: --accent--; }
+  .modulex-cagri-rezervasyon-cubugu-dugme .material-symbols-outlined { font-size: 20px; }
+
+  .modulex-cagri-rezervasyon-cubugu-bas2 { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 12px 48px; align-items: end; margin-block-end: clamp(24px, 4vw, 40px); }
+  .modulex-cagri-rezervasyon-cubugu-medya { overflow: hidden; border-radius: --yuvarlak--; }
+  .modulex-cagri-rezervasyon-cubugu-foto { width: 100%; aspect-ratio: 21 / 8; object-fit: cover; animation: modulex-cagri-rezervasyon-cubugu-yak 24s ease-in-out infinite alternate; }
+  .modulex-cagri-rezervasyon-cubugu-cubuk { position: relative; display: flex; flex-wrap: wrap; align-items: flex-end; gap: 12px; padding: clamp(14px, 2vw, 20px); border: 1px solid --cizgi--; border-radius: calc(--yuvarlak-- + 4px); background: --kartBg--; box-shadow: 0 30px 60px -38px color-mix(in srgb, --yaziRenk-- 75%, transparent); }
+  .modulex-cagri-rezervasyon-cubugu-sahne--gorsel .modulex-cagri-rezervasyon-cubugu-cubuk { margin-block-start: clamp(-64px, -6vw, -36px); margin-inline: clamp(12px, 5vw, 64px); }
+  .modulex-cagri-rezervasyon-cubugu-alan { flex: 1 1 160px; display: grid; gap: 6px; min-width: 0; }
+  .modulex-cagri-rezervasyon-cubugu-etiket { color: --muted--; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+  .modulex-cagri-rezervasyon-cubugu-girdi { inline-size: 100%; min-height: 50px; padding: 10px 14px; border: 1px solid --cizgi--; border-radius: 12px; background: --bg--; color: --yaziRenk--; font: inherit; font-variant-numeric: tabular-nums; transition: border-color 0.2s ease; }
+  .modulex-cagri-rezervasyon-cubugu-girdi:focus { border-color: --accent--; outline: none; box-shadow: 0 0 0 3px color-mix(in srgb, --accent-- 25%, transparent); }
+  .modulex-cagri-rezervasyon-cubugu-kisi { max-inline-size: 140px; }
+  .modulex-cagri-rezervasyon-cubugu-alan:has(.modulex-cagri-rezervasyon-cubugu-kisi) { flex: 0 1 140px; }
+  .modulex-cagri-rezervasyon-cubugu-gonder { flex: 0 0 auto; min-height: 50px; border-radius: 12px; }
+  .modulex-cagri-rezervasyon-cubugu-alt { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 12px 24px; margin-block-start: 20px; }
+  .modulex-cagri-rezervasyon-cubugu-gece { display: flex; align-items: center; gap: 6px; color: --yaziRenk--; }
+  .modulex-cagri-rezervasyon-cubugu-geikon { color: --accentInk--; font-size: 20px; }
+  .modulex-cagri-rezervasyon-cubugu-wa { display: inline-flex; align-items: center; gap: 8px; color: --yaziRenk--; font-weight: 700; text-decoration: none; transition: color 0.25s ease; }
+  .modulex-cagri-rezervasyon-cubugu-wa:hover { color: --accentInk--; }
+  .modulex-cagri-rezervasyon-cubugu-ikinci { color: --yaziRenk--; font-weight: 600; text-decoration: underline; text-underline-offset: 4px; }
+  @keyframes modulex-cagri-rezervasyon-cubugu-yak { from { transform: scale(1); } to { transform: scale(1.06); } }
+  @media (max-width: 768px) {
+    .modulex-cagri-rezervasyon-cubugu-bas2 { grid-template-columns: minmax(0, 1fr); }
+    .modulex-cagri-rezervasyon-cubugu-foto { aspect-ratio: 4 / 3; }
+    .modulex-cagri-rezervasyon-cubugu-sahne--gorsel .modulex-cagri-rezervasyon-cubugu-cubuk { margin-block-start: -28px; margin-inline: 8px; }
+    .modulex-cagri-rezervasyon-cubugu-gonder { flex: 1 1 100%; justify-content: center; }
+    .modulex-cagri-rezervasyon-cubugu-alan:has(.modulex-cagri-rezervasyon-cubugu-kisi), .modulex-cagri-rezervasyon-cubugu-kisi { flex: 1 1 100%; max-inline-size: none; }
+  }
+  .modulex-cagri-rezervasyon-cubugu-wasvg { width: 1.25em; height: 1.25em; flex: none; }
+  .modulex-cagri-rezervasyon-cubugu-maddeler { display: grid; gap: 12px; }
+  .modulex-cagri-rezervasyon-cubugu-madde { display: flex; align-items: flex-start; gap: 12px; }
+  .modulex-cagri-rezervasyon-cubugu-mikon { flex: none; color: --accentInk--; font-size: 24px; }
+  .modulex-cagri-rezervasyon-cubugu-myazi { display: grid; gap: 2px; }
+  .modulex-cagri-rezervasyon-cubugu-myazi strong { font-weight: 700; }
+  .modulex-cagri-rezervasyon-cubugu-myazi small { color: --muted--; font-size: 0.92rem; }
+  .modulex-cagri-rezervasyon-cubugu-not { color: --muted--; font-size: 0.9rem; }
+  .modulex-cagri-rezervasyon-cubugu-saat { display: flex; align-items: center; gap: 8px; color: --muted--; font-size: 0.95rem; }
+  .modulex-cagri-rezervasyon-cubugu-saat .material-symbols-outlined { font-size: 20px; color: --accentInk--; }
+  .modulex-cagri-rezervasyon-cubugu-metin { max-width: 62ch; }
+
+  :is([lang="ar"], [lang="fa"], [lang="he"], [lang="ur"]) .modulex-cagri-rezervasyon-cubugu :is(.modulex-cagri-rezervasyon-cubugu-baslik, .modulex-cagri-rezervasyon-cubugu-ust, h3, h4, strong) { letter-spacing: 0; }
+  :is([lang="ar"], [lang="fa"], [lang="he"], [lang="ur"]) .modulex-cagri-rezervasyon-cubugu-baslik { line-height: 1.35; }
+  @media (max-width: 768px) {
+    .modulex-cagri-rezervasyon-cubugu { padding-inline: 16px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .modulex-cagri-rezervasyon-cubugu *, .modulex-cagri-rezervasyon-cubugu *::before, .modulex-cagri-rezervasyon-cubugu *::after { animation: none !important; transition: none !important; }
+  }
+</style>
+<script>
+  (() => {
+    const P = "modulex-cagri-rezervasyon-cubugu";
+    const az = !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+    const rzTarih = (s) => {
+        const f = s.querySelector("form[data-rz]");
+        if (!f) return;
+        const g = f.querySelector("[data-rz-giris]");
+        const c = f.querySelector("[data-rz-cikis]");
+        const gece = s.querySelector("[data-rz-gece]");
+        const dl = document.documentElement.lang || undefined;
+        const iso = (t) => `${t.getFullYear()}-${String(t.getMonth() + 1).padStart(2, "0")}-${String(t.getDate()).padStart(2, "0")}`;
+        const coz = (v) => { const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(v || ""); return m ? new Date(+m[1], +m[2] - 1, +m[3]) : null; };
+        let nf = null;
+        let tf = null;
+        try { nf = new Intl.NumberFormat(dl); tf = new Intl.DateTimeFormat(dl, { day: "numeric", month: "long", year: "numeric" }); } catch (x) { nf = null; tf = null; }
+        const bugun = new Date();
+        bugun.setHours(0, 0, 0, 0);
+        if (g) g.min = iso(bugun);
+        const etiket = (e) => { const l = e.id ? f.querySelector(`label[for="${e.id}"]`) : null; return l ? l.textContent.trim() : e.name; };
+        const deger = (e) => { const v = String(e.value).trim(); const t = e.type === "date" ? coz(v) : null; return t && tf ? tf.format(t) : v; };
+        const esle = () => {
+          const a = g ? coz(g.value) : null;
+          if (c) {
+            const ert = new Date(a || bugun);
+            ert.setDate(ert.getDate() + 1);
+            c.min = iso(ert);
+            const b0 = coz(c.value);
+            if (a && (!b0 || b0 < ert)) c.value = iso(ert);
+          }
+          const b = c ? coz(c.value) : null;
+          const n = a && b ? Math.round((b - a) / 86400000) : 0;
+          if (gece) {
+            gece.hidden = n < 1;
+            const say = gece.querySelector("[data-rz-sayi]");
+            if (say) say.textContent = n > 0 ? (nf ? nf.format(n) : String(n)) : "";
+          }
+          s.querySelectorAll("a[data-rz-wa]").forEach((w) => {
+            const satir = [...f.elements].filter((e) => e.name && String(e.value).trim()).map((e) => `${etiket(e)}: ${deger(e)}`);
+            const metin = [w.dataset.rzOnek || ""].concat(satir).filter(Boolean).join("\n");
+            w.setAttribute("href", `https://wa.me/${w.dataset.rzWa}${metin ? "?text=" + encodeURIComponent(metin) : ""}`);
+          });
+        };
+        f.addEventListener("input", esle);
+        f.addEventListener("change", esle);
+        esle();
+      };
+    document.querySelectorAll("." + P).forEach((s) => {
+      if (s.dataset.fbHazir) return;
+      s.dataset.fbHazir = "1";
+      rzTarih(s, P, az);
+    });
+  })();
+</script>

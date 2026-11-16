@@ -1,0 +1,142 @@
+<footer class="modulex-alt-site-haritasi{{fbsinif}}" {{fbetiket}}>
+  <div class="modulex-alt-site-haritasi-ic">
+    {{fbbas}}
+    {{fbgovde}}
+  </div>
+</footer>
+
+<style>
+  /* alt-site-haritasi — Gezinme sütun sütun değil, kesintisiz akan bir dizin (CSS columns); çok sayfalı, hizmet listesi uzun kurumsal siteler için. */
+  .modulex-alt-site-haritasi { box-sizing: border-box; width: 100%; padding: --bosluk-- 20px; background: --bg--; color: --text--; font-size: 1rem; line-height: 1.6; font-family: var(--mx-font-sans, inherit); overflow-wrap: break-word; }
+  .modulex-alt-site-haritasi *, .modulex-alt-site-haritasi *::before, .modulex-alt-site-haritasi *::after { box-sizing: border-box; }
+  /* ham/css.css «* { font-size: 14px }» kalıtımı keser — modül içinde boyut üstten gelsin (ikon yazı tipi hariç) */
+  .modulex-alt-site-haritasi :where(*:not(.material-symbols-outlined)) { font-size: inherit; }
+  /* aynı «*» kuralı font-weight 400 · line-height 1.2 · font-family de basar — modül içinde kalıtım */
+  .modulex-alt-site-haritasi :where(*:not(.material-symbols-outlined)) { font-weight: inherit; line-height: inherit; font-family: inherit; }
+  .modulex-alt-site-haritasi :where(h2, h3, h4, p, ul, ol, li, figure, blockquote, dl, dd) { margin: 0; }
+  .modulex-alt-site-haritasi :where(ul, ol) { padding: 0; list-style: none; }
+  .modulex-alt-site-haritasi img { display: block; max-width: 100%; }
+  /* <img width height> öznitelik yüksekliği CSS aspect-ratio'yu ezer — sıfır özgüllükle auto (modül sınıfının height'ı yine kazanır) */
+  :where(.modulex-alt-site-haritasi) img { height: auto; }
+  .modulex-alt-site-haritasi [hidden] { display: none !important; }
+  .modulex-alt-site-haritasi :where(a, button, summary, [data-cevir]) { cursor: pointer; }
+  .modulex-alt-site-haritasi :where(a, button, summary, [tabindex]):focus-visible { outline: 3px solid --accent--; outline-offset: 3px; }
+  .modulex-alt-site-haritasi-ic { max-width: --max--; margin-inline: auto; }
+  .modulex-alt-site-haritasi-bas { display: grid; gap: 12px; margin-block-end: clamp(32px, 4vw, 52px); }
+  .modulex-alt-site-haritasi--bassiz .modulex-alt-site-haritasi-bas { display: none; }
+  .modulex-alt-site-haritasi-ust { color: --accentInk--; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+  .modulex-alt-site-haritasi-baslik { font-family: var(--mx-font-heading, inherit); font-size: clamp(1.8rem, 3.4vw, 2.8rem); font-weight: 750; letter-spacing: -0.025em; line-height: 1.1; }
+  .modulex-alt-site-haritasi-metin { color: --muted--; font-size: 1.05rem; line-height: 1.7; }
+  .modulex-alt-site-haritasi-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-block-start: 8px; }
+  .modulex-alt-site-haritasi-dugme { display: inline-flex; align-items: center; gap: 8px; min-height: 48px; padding: 12px 22px; border: 2px solid --accent--; border-radius: 999px; background: --accent--; color: --accentText--; font-weight: 700; text-decoration: none; transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease; }
+  .modulex-alt-site-haritasi-dugme:hover { transform: translateY(-2px); }
+  .modulex-alt-site-haritasi-dugme--ikincil { background: transparent; color: --text--; border-color: --cizgi--; }
+  .modulex-alt-site-haritasi-dugme--ikincil:hover { border-color: --accent--; }
+  .modulex-alt-site-haritasi-dugme .material-symbols-outlined { font-size: 20px; }
+
+  .modulex-alt-site-haritasi-bag { color: inherit; text-decoration: none; transition: color 0.2s ease; }
+  .modulex-alt-site-haritasi-bag:hover { color: --accentInk--; text-decoration: underline; text-underline-offset: 4px; }
+  .modulex-alt-site-haritasi-bag[aria-current="page"] { color: --accentInk--; font-weight: 700; }
+  .modulex-alt-site-haritasi-logo { display: inline-flex; align-items: center; gap: 10px; color: inherit; text-decoration: none; }
+  .modulex-alt-site-haritasi-logo img { width: auto; max-height: --logoH--; }
+  .modulex-alt-site-haritasi-ad { font-family: var(--mx-font-heading, inherit); font-size: 1.4rem; font-weight: 800; letter-spacing: -0.02em; line-height: 1.1; }
+  .modulex-alt-site-haritasi-bbaslik { margin-block-end: 14px; color: --accentInk--; font-size: 0.8rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; }
+  .modulex-alt-site-haritasi-sayfalar, .modulex-alt-site-haritasi-baglantilar, .modulex-alt-site-haritasi-iletisim, .modulex-alt-site-haritasi-yasal { display: grid; gap: 9px; }
+  .modulex-alt-site-haritasi-il { display: flex; align-items: flex-start; gap: 10px; }
+  .modulex-alt-site-haritasi-il-ic { display: grid; gap: 2px; }
+  .modulex-alt-site-haritasi-il-etiket { color: --muted--; font-size: 0.8rem; }
+  .modulex-alt-site-haritasi-il-ikon { flex: none; color: --accentInk--; font-size: 20px; }
+  .modulex-alt-site-haritasi-saatler { display: grid; gap: 6px; }
+  .modulex-alt-site-haritasi-saat { display: flex; justify-content: space-between; gap: 16px; }
+  .modulex-alt-site-haritasi-saat dd { margin: 0; font-weight: 600; font-variant-numeric: tabular-nums; }
+  .modulex-alt-site-haritasi-sosyal { display: flex; flex-wrap: wrap; gap: 10px; }
+  .modulex-alt-site-haritasi-sosyal-a { display: inline-grid; place-items: center; width: 42px; height: 42px; border: 1px solid --cizgi--; border-radius: 50%; color: inherit; font-size: 18px; transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.25s ease; }
+  .modulex-alt-site-haritasi-sosyal-a:hover { border-color: --accent--; background: --accent--; color: --accentText--; transform: translateY(-2px); }
+  .modulex-alt-site-haritasi-hakkinda { max-width: 46ch; color: --muted--; }
+  .modulex-alt-site-haritasi-telif { display: flex; flex-wrap: wrap; gap: 4px 14px; color: --muted--; font-size: 0.9rem; }
+  .modulex-alt-site-haritasi-dil:empty { display: none; }
+  .modulex-alt-site-haritasi-yukari { display: inline-grid; place-items: center; flex: none; width: 46px; height: 46px; border-radius: 50%; background: --accent--; color: --accentText--; text-decoration: none; transition: transform 0.25s ease; }
+  .modulex-alt-site-haritasi-yukari:hover { transform: translateY(-3px); }
+  .modulex-alt-site-haritasi-bulten { display: grid; gap: 8px; }
+  .modulex-alt-site-haritasi-nl-etiket { font-size: 0.9rem; font-weight: 700; }
+  .modulex-alt-site-haritasi-nl-satir { display: flex; flex-wrap: wrap; gap: 8px; }
+  .modulex-alt-site-haritasi-nl-girdi { flex: 1 1 200px; min-width: 0; min-height: 48px; padding: 10px 18px; border: 1px solid --cizgi--; border-radius: 999px; background: --bg--; color: --text--; font: inherit; }
+  .modulex-alt-site-haritasi-nl-dugme { display: inline-flex; align-items: center; gap: 6px; min-height: 48px; padding: 10px 22px; border: 0; border-radius: 999px; background: --accent--; color: --accentText--; font: inherit; font-weight: 700; transition: transform 0.2s ease; }
+  .modulex-alt-site-haritasi-nl-dugme:hover { transform: translateY(-2px); }
+  .modulex-alt-site-haritasi-nl-dugme .material-symbols-outlined { font-size: 18px; }
+  .modulex-alt-site-haritasi-nl-durum:empty { display: none; }
+  .modulex-alt-site-haritasi-nl-baslik { font-family: var(--mx-font-heading, inherit); font-size: clamp(1.4rem, 2.6vw, 2rem); font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; }
+  .modulex-alt-site-haritasi-nl-metin { color: --muted--; }
+
+  .modulex-alt-site-haritasi-nl-kvkk { color: --muted--; font-size: 0.8rem; line-height: 1.5; }
+
+  .modulex-alt-site-haritasi-izgara { display: grid; grid-template-columns: minmax(0, 2fr) minmax(280px, 1fr); gap: clamp(28px, 5vw, 64px); align-items: start; }
+  .modulex-alt-site-haritasi-harita { display: grid; gap: 28px; }
+  .modulex-alt-site-haritasi-akis { display: block; columns: 3 170px; column-gap: 28px; column-rule: 1px solid --cizgi--; }
+  .modulex-alt-site-haritasi-akis li { break-inside: avoid; padding-block: 5px; }
+  .modulex-alt-site-haritasi-blok--yasal { padding-block-start: 16px; border-block-start: 1px solid --cizgi--; font-size: 0.9rem; }
+  .modulex-alt-site-haritasi-panel { display: grid; gap: 24px; padding: clamp(20px, 3vw, 30px); border: 2px solid --cizgi--; border-radius: --yuvarlak--; background-color: --kartBg--; }
+  .modulex-alt-site-haritasi-nl { display: grid; gap: 10px; padding-block-start: 20px; border-block-start: 1px solid --cizgi--; }
+  .modulex-alt-site-haritasi-nl .modulex-alt-site-haritasi-nl-baslik { font-size: 1.2rem; }
+  .modulex-alt-site-haritasi-alt { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 28px; margin-block-start: 44px; padding-block-start: 24px; border-block-start: 2px solid --text--; }
+  .modulex-alt-site-haritasi-alt .modulex-alt-site-haritasi-hakkinda { flex: 1 1 260px; font-size: 0.92rem; }
+  @media (max-width: 1024px) {
+    .modulex-alt-site-haritasi-izgara { grid-template-columns: minmax(0, 1fr); }
+  }
+  @media (max-width: 768px) {
+    .modulex-alt-site-haritasi-akis { columns: 2 140px; }
+  }
+
+  :is([lang="ar"], [lang="fa"], [lang="he"], [lang="ur"]) .modulex-alt-site-haritasi :is(.modulex-alt-site-haritasi-baslik, .modulex-alt-site-haritasi-ust, h3, h4, strong) { letter-spacing: 0; }
+  :is([lang="ar"], [lang="fa"], [lang="he"], [lang="ur"]) .modulex-alt-site-haritasi-baslik { line-height: 1.35; }
+  @media (max-width: 768px) {
+    .modulex-alt-site-haritasi { padding-inline: 16px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .modulex-alt-site-haritasi *, .modulex-alt-site-haritasi *::before, .modulex-alt-site-haritasi *::after { animation: none !important; transition: none !important; }
+  }
+</style>
+<script>
+  (() => {
+    const P = "modulex-alt-site-haritasi";
+    const az = !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+    const form = (s, P) => {
+        s.querySelectorAll("form[data-fb-form]").forEach((f) => {
+          const durum = f.querySelector("[role=status]");
+          const yaz = (m, hata) => { if (durum) { durum.textContent = m || ""; durum.classList.toggle(P + "-durum--hata", !!hata); } };
+          let t0 = Date.now();
+          const al = (ad) => { const e = f.elements.namedItem(ad); return e && "value" in e ? String(e.value).trim() : ""; };
+          const etiket = (ad) => { const e = f.elements.namedItem(ad); const l = e && e.id ? f.querySelector(`label[for="${e.id}"]`) : null; return l ? l.textContent.trim() : ad; };
+          const konuMetin = () => { const e = f.elements.namedItem("topic"); return e && e.selectedIndex > 0 ? e.options[e.selectedIndex].text.trim() : ""; };
+          f.addEventListener("submit", (e) => {
+            e.preventDefault();
+            if (!f.checkValidity()) { f.reportValidity(); return; }
+            if (al("website")) return;
+            const govde = ["name", "email", "phone"].filter(al).map((k) => `${etiket(k)}: ${al(k)}`)
+              .concat(konuMetin() ? [`${etiket("topic")}: ${konuMetin()}`] : [], al("message") ? ["", al("message")] : []).join("\n");
+            const d = f.dataset;
+            if (d.action) {
+              const b = f.querySelector("[type=submit]");
+              if (b) b.disabled = true;
+              const yuk = { name: al("name"), email: al("email"), phone: al("phone"), topic: konuMetin(), message: al("message"), kvkk: true, lang: document.documentElement.lang || "", page: location.pathname, website: al("website"), t: Date.now() - t0 };
+              fetch(d.action, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(yuk) })
+                .then((r) => r.json().catch(() => ({})).then((j) => r.ok && j && j.ok !== false))
+                .then((ok) => { if (b) b.disabled = false; yaz(ok ? d.ok : d.hata, !ok); if (ok) { f.reset(); t0 = Date.now(); } })
+                .catch(() => { if (b) b.disabled = false; yaz(d.hata, true); });
+              return;
+            }
+            if (d.gonderim === "whatsapp" && d.wa) { window.open(`https://wa.me/${d.wa}?text=${encodeURIComponent(govde)}`, "_blank", "noopener"); return; }
+            if (d.eposta) {
+              const konu = [d.konu || "", konuMetin()].filter(Boolean).join(" - ");
+              location.href = `mailto:${d.eposta}?subject=${encodeURIComponent(konu)}&body=${encodeURIComponent(govde.replace(/\n/g, "\r\n"))}`;
+            }
+          });
+        });
+      };
+    document.querySelectorAll("." + P).forEach((s) => {
+      if (s.dataset.fbHazir) return;
+      s.dataset.fbHazir = "1";
+      form(s, P, az);
+    });
+  })();
+</script>

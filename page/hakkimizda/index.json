@@ -1,0 +1,47 @@
+{
+  "name": {
+    "tr": "Konağımız",
+    "en": "The mansion",
+    "ar": "قصرنا"
+  },
+  "status": "play",
+  "category": "",
+  "id": "hakkimizda",
+  "url": "",
+  "path": "hakkimizda",
+  "index": 1,
+  "icon": "info",
+  "desing": {
+    "header": [],
+    "body": [
+      "6uh69e",
+      "zn7ewc"
+    ],
+    "footer": []
+  },
+  "pathnext": "",
+  "description": {
+    "tr": "Misafir puanları ve basında çıkan yazılar (kurgusal).",
+    "en": "Guest ratings and press coverage (fictional).",
+    "ar": "تقييمات الضيوف وما كُتب في الصحافة (افتراضي)."
+  },
+  "spot": {
+    "tr": "",
+    "en": "",
+    "ar": ""
+  },
+  "desc": {},
+  "title": {
+    "tr": "Konağımız",
+    "en": "The mansion",
+    "ar": "قصرنا"
+  },
+  "keyword": {
+    "tr": "hakkımızda",
+    "en": "about",
+    "ar": "من نحن"
+  },
+  "text": {},
+  "update": "2026-11-16T11:56:11.307Z",
+  "date": "2026-10-30"
+}
