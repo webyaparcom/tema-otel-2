@@ -3,17 +3,23 @@
   "name": {
     "tr": "Misyon",
     "en": "Mission",
-    "ar": "المهمة"
+    "ar": "المهمة",
+    "de": "Mission",
+    "ru": "Миссия"
   },
   "description": {
     "tr": "Misyonumuz",
     "en": "Our mission",
-    "ar": "مهمتنا"
+    "ar": "مهمتنا",
+    "de": "Unsere Mission",
+    "ru": "Наша миссия"
   },
   "keyword": {
     "tr": "Misyon",
     "en": "mission, our mission, corporate responsibility",
-    "ar": "الرسالة, رسالتنا, المسؤولية المؤسسية"
+    "ar": "الرسالة, رسالتنا, المسؤولية المؤسسية",
+    "de": "Mission",
+    "ru": "Миссия"
   },
   "path": "misyon",
   "icon": "flag",
@@ -29,12 +35,16 @@
   "text": {
     "tr": "<h2>Misyonumuz</h2>\n<p>Küçük ölçekli, sakin ve yerel üretime dayalı bir konaklama sunmak.</p>",
     "en": "<h2>Our mission</h2>\n<p>To offer a small, calm stay built on local produce.</p>",
-    "ar": "<h2>مهمتنا</h2>\n<p>تقديم إقامة صغيرة وهادئة تعتمد على المنتجات المحلية.</p>"
+    "ar": "<h2>مهمتنا</h2>\n<p>تقديم إقامة صغيرة وهادئة تعتمد على المنتجات المحلية.</p>",
+    "de": "<h2>Unsere Mission</h2>\n<p>Ein kleines, ruhiges und auf lokale Produkte basierendes住宿erlebnis zu bieten.</p>",
+    "ru": "<h2>Наша миссия</h2>\n<p>Предлагать небольшой, спокойный отдых, основанный на местных продуктах.</p>"
   },
   "title": {
     "tr": "Misyon",
     "en": "Mission",
-    "ar": "المهمة"
+    "ar": "المهمة",
+    "de": "Mission",
+    "ru": "Миссия"
   },
   "date": "2026-11-16T11:53:22.206Z",
   "update": "2026-11-16T11:56:11.325Z",

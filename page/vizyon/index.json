@@ -3,17 +3,23 @@
   "name": {
     "tr": "Vizyon",
     "en": "Vision",
-    "ar": "الرؤية"
+    "ar": "الرؤية",
+    "de": "Vision",
+    "ru": "Видение"
   },
   "description": {
     "tr": "Vizyonumuz",
     "en": "Our vision",
-    "ar": "رؤيتنا"
+    "ar": "رؤيتنا",
+    "de": "Unsere Vision",
+    "ru": "Наше видение"
   },
   "keyword": {
     "tr": "Vizyon",
     "en": "vision, our vision, goals",
-    "ar": "الرؤية, رؤيتنا, الأهداف"
+    "ar": "الرؤية, رؤيتنا, الأهداف",
+    "de": "Vision",
+    "ru": "Видение"
   },
   "path": "vizyon",
   "icon": "visibility",
@@ -29,12 +35,16 @@
   "text": {
     "tr": "<h2>Vizyonumuz</h2>\n<p>Datça’da taş mimariyi yaşatan konaklama adresi olmak.</p>",
     "en": "<h2>Our vision</h2>\n<p>To be the place to stay in Datca that keeps stone architecture alive.</p>",
-    "ar": "<h2>رؤيتنا</h2>\n<p>أن نكون عنوان الإقامة في داتشا الذي يحافظ على العمارة الحجرية.</p>"
+    "ar": "<h2>رؤيتنا</h2>\n<p>أن نكون عنوان الإقامة في داتشا الذي يحافظ على العمارة الحجرية.</p>",
+    "de": "<h2>Unsere Vision</h2>\n<p>Die Unterkunft zu sein, die die Steinarchitektur in Datça lebendig hält.</p>",
+    "ru": "<h2>Наше видение</h2>\n<p>Быть местом проживания, которое сохраняет каменную архитектуру Датчи живой.</p>"
   },
   "title": {
     "tr": "Vizyon",
     "en": "Vision",
-    "ar": "الرؤية"
+    "ar": "الرؤية",
+    "de": "Vision",
+    "ru": "Видение"
   },
   "date": "2026-11-16T11:53:22.206Z",
   "update": "2026-11-16T11:56:11.326Z",
