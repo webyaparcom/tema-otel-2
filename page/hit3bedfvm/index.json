@@ -3,17 +3,23 @@
   "name": {
     "tr": "Konuk defteri",
     "en": "Guest book",
-    "ar": "دفتر الضيوف"
+    "ar": "دفتر الضيوف",
+    "de": "Gästebuch",
+    "ru": "Гостевая книга"
   },
   "description": {
     "tr": "Misafir yorumları (kurgusal).",
     "en": "Guest reviews (fictional).",
-    "ar": "آراء الضيوف (افتراضية)."
+    "ar": "آراء الضيوف (افتراضية).",
+    "de": "Gästebewertungen (fiktiv).",
+    "ru": "Отзывы гостей (вымышленные)."
   },
   "keyword": {
     "tr": "misafir yorumu",
     "en": "guest review",
-    "ar": "آراء الضيوف"
+    "ar": "آراء الضيوف",
+    "de": "Gästebewertung",
+    "ru": "Отзыв гостя"
   },
   "path": "referanslar",
   "icon": "stars",
@@ -33,7 +39,9 @@
   "title": {
     "tr": "Konuk defteri",
     "en": "Guest book",
-    "ar": "دفتر الضيوف"
+    "ar": "دفتر الضيوف",
+    "de": "Gästebuch",
+    "ru": "Гостевая книга"
   },
   "date": "2026-11-16T11:53:22.362Z",
   "update": "2026-11-16T11:56:11.314Z"

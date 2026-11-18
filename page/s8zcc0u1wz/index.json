@@ -3,17 +3,23 @@
   "name": {
     "tr": "Odalar ve olanaklar",
     "en": "Rooms and facilities",
-    "ar": "الغرف والمرافق"
+    "ar": "الغرف والمرافق",
+    "de": "Zimmer",
+    "ru": "Номера"
   },
   "description": {
     "tr": "Fiyatlar tarihe ve doluluğa göre değiştiği için konaklama talebiyle bilgi verilir.",
     "en": "Prices vary by date and occupancy, so details are shared with your stay request.",
-    "ar": "تختلف الأسعار حسب التاريخ والإشغال، لذا تُقدَّم التفاصيل مع طلب الإقامة."
+    "ar": "تختلف الأسعار حسب التاريخ والإشغال، لذا تُقدَّم التفاصيل مع طلب الإقامة.",
+    "de": "Da die Preise je nach Datum und Auslastung variieren, werden die Details mit Ihrer Buchungsanfrage mitgeteilt.",
+    "ru": "Цены зависят от даты и загрузки, поэтому детали сообщаются вместе с запросом на проживание."
   },
   "keyword": {
     "tr": "Odalar ve olanaklar",
     "en": "Rooms and facilities",
-    "ar": "الغرف والمرافق"
+    "ar": "الغرف والمرافق",
+    "de": "Zimmer",
+    "ru": "Номера"
   },
   "path": "hizmetler",
   "icon": "bed",
@@ -33,7 +39,9 @@
   "title": {
     "tr": "Odalar ve olanaklar",
     "en": "Rooms and facilities",
-    "ar": "الغرف والمرافق"
+    "ar": "الغرف والمرافق",
+    "de": "Zimmer",
+    "ru": "Номера"
   },
   "date": "2026-11-16T11:53:22.348Z",
   "update": "2026-11-16T11:56:11.304Z"

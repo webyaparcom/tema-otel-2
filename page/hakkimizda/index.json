@@ -2,7 +2,9 @@
   "name": {
     "tr": "Konağımız",
     "en": "The mansion",
-    "ar": "قصرنا"
+    "ar": "قصرنا",
+    "de": "Unser Haus",
+    "ru": "Наш дом"
   },
   "status": "play",
   "category": "",
@@ -23,7 +25,9 @@
   "description": {
     "tr": "Misafir puanları ve basında çıkan yazılar (kurgusal).",
     "en": "Guest ratings and press coverage (fictional).",
-    "ar": "تقييمات الضيوف وما كُتب في الصحافة (افتراضي)."
+    "ar": "تقييمات الضيوف وما كُتب في الصحافة (افتراضي).",
+    "de": "Gästebewertungen und Presseartikel (fiktiv).",
+    "ru": "Оценки гостей и публикации в прессе (вымышленные)."
   },
   "spot": {
     "tr": "",
@@ -34,12 +38,16 @@
   "title": {
     "tr": "Konağımız",
     "en": "The mansion",
-    "ar": "قصرنا"
+    "ar": "قصرنا",
+    "de": "Unser Haus",
+    "ru": "Наш дом"
   },
   "keyword": {
     "tr": "hakkımızda",
     "en": "about",
-    "ar": "من نحن"
+    "ar": "من نحن",
+    "de": "Über uns",
+    "ru": "О нас"
   },
   "text": {},
   "update": "2026-11-16T11:56:11.307Z",

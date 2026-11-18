@@ -4,12 +4,16 @@
   "description": {
     "tr": "Badem Taş Konak: Datça’da badem ve zeytin ağaçları arasında 16 odalı taş konak; odalar, olanaklar ve konaklama talebi. Demo site; içerik kurgusaldır.",
     "en": "Badem Tas Konak: a 16-room stone mansion among almond and olive trees in Datca; rooms, facilities and stay requests. Demo site; content is fictional.",
-    "ar": "بادم طاش كوناك: قصر حجري من 16 غرفة بين أشجار اللوز والزيتون في داتشا؛ الغرف والمرافق وطلب الإقامة. موقع تجريبي؛ المحتوى افتراضي."
+    "ar": "بادم طاش كوناك: قصر حجري من 16 غرفة بين أشجار اللوز والزيتون في داتشا؛ الغرف والمرافق وطلب الإقامة. موقع تجريبي؛ المحتوى افتراضي.",
+    "de": "Badem Taş Konak: Steinhaus mit 16 Zimmern zwischen Mandel- und Olivenbäumen in Datça; Zimmer, Ausstattung und Übernachtungsanfrage. Demo-Website; die Inhalte sind fiktiv.",
+    "ru": "Badem Taş Konak: каменный особняк на 16 номеров среди миндальных и оливковых деревьев в Датче; номера, удобства и заявка на проживание. Демо-сайт; содержание вымышленное."
   },
   "keyword": {
     "tr": "taş konak, butik otel, Datça, konaklama",
     "en": "stone mansion, boutique hotel, Datca, accommodation",
-    "ar": "قصر حجري، فندق بوتيك، داتشا، إقامة"
+    "ar": "قصر حجري، فندق بوتيك، داتشا، إقامة",
+    "de": "Steinkonak, Boutique-Hotel, Datça, Unterkunft",
+    "ru": "каменный конак, бутик-отель, Датча, проживание"
   },
   "category": "Kurumsal",
   "name": "Badem Taş Konak",
@@ -18,15 +22,27 @@
     "tr": true,
     "en": true,
     "ar": true,
-    "de": false,
-    "ru": false,
+    "de": true,
+    "ru": true,
     "es": false,
     "fr": false,
     "it": false,
     "ja": false,
     "zh": false,
     "ko": false,
-    "pt": false
+    "pt": false,
+    "fa": false,
+    "he": false,
+    "ur": false,
+    "nl": false,
+    "pl": false,
+    "uk": false,
+    "az": false,
+    "ka": false,
+    "el": false,
+    "bg": false,
+    "ro": false,
+    "hi": false
   },
   "logo": "logo.png",
   "multi": false,

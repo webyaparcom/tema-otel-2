@@ -5,12 +5,16 @@
       "name": {
         "tr": "Odalar ve olanaklar",
         "en": "Rooms and facilities",
-        "ar": "الغرف والمرافق"
+        "ar": "الغرف والمرافق",
+        "de": "Zimmer",
+        "ru": "Номера"
       },
       "description": {
         "tr": "Fiyatlar tarihe ve doluluğa göre değiştiği için konaklama talebiyle bilgi verilir.",
         "en": "Prices vary by date and occupancy, so details are shared with your stay request.",
-        "ar": "تختلف الأسعار حسب التاريخ والإشغال، لذا تُقدَّم التفاصيل مع طلب الإقامة."
+        "ar": "تختلف الأسعار حسب التاريخ والإشغال، لذا تُقدَّم التفاصيل مع طلب الإقامة.",
+        "de": "Da die Preise je nach Datum und Auslastung variieren, werden die Details mit Ihrer Buchungsanfrage mitgeteilt.",
+        "ru": "Цены зависят от даты и загрузки, поэтому детали сообщаются вместе с запросом на проживание."
       },
       "path": "hizmetler",
       "icon": "bed",
@@ -30,7 +34,9 @@
       "name": {
         "tr": "Konağımız",
         "en": "The mansion",
-        "ar": "قصرنا"
+        "ar": "قصرنا",
+        "de": "Unser Haus",
+        "ru": "Наш дом"
       },
       "status": "play",
       "id": "hakkimizda",
@@ -51,7 +57,9 @@
       "description": {
         "tr": "Misafir puanları ve basında çıkan yazılar (kurgusal).",
         "en": "Guest ratings and press coverage (fictional).",
-        "ar": "تقييمات الضيوف وما كُتب في الصحافة (افتراضي)."
+        "ar": "تقييمات الضيوف وما كُتب في الصحافة (افتراضي).",
+        "de": "Gästebewertungen und Presseartikel (fiktiv).",
+        "ru": "Оценки гостей и публикации в прессе (вымышленные)."
       }
     },
     {
@@ -59,12 +67,16 @@
       "name": {
         "tr": "İptal koşulları",
         "en": "Cancellation terms",
-        "ar": "شروط الإلغاء"
+        "ar": "شروط الإلغاء",
+        "de": "Storno",
+        "ru": "Отмена"
       },
       "description": {
         "tr": "İptal, değişiklik ve cayma hakkı bilgisi.",
         "en": "Cancellation, changes and right of withdrawal.",
-        "ar": "الإلغاء والتعديل وحق العدول."
+        "ar": "الإلغاء والتعديل وحق العدول.",
+        "de": "Informationen zu Stornierung, Änderung und Widerrufsrecht.",
+        "ru": "Сведения об отмене, изменении и праве на отказ."
       },
       "path": "sorular",
       "icon": "policy",
@@ -85,12 +97,16 @@
       "name": {
         "tr": "Konuk defteri",
         "en": "Guest book",
-        "ar": "دفتر الضيوف"
+        "ar": "دفتر الضيوف",
+        "de": "Gästebuch",
+        "ru": "Гостевая книга"
       },
       "description": {
         "tr": "Misafir yorumları (kurgusal).",
         "en": "Guest reviews (fictional).",
-        "ar": "آراء الضيوف (افتراضية)."
+        "ar": "آراء الضيوف (افتراضية).",
+        "de": "Gästebewertungen (fiktiv).",
+        "ru": "Отзывы гостей (вымышленные)."
       },
       "path": "referanslar",
       "icon": "stars",
@@ -111,12 +127,16 @@
       "name": {
         "tr": "Rezervasyon",
         "en": "Booking",
-        "ar": "الحجز"
+        "ar": "الحجز",
+        "de": "Reservierung",
+        "ru": "Бронирование"
       },
       "description": {
         "tr": "Konaklama talep formu (demo).",
         "en": "Stay request form (demo).",
-        "ar": "نموذج طلب إقامة (تجريبي)."
+        "ar": "نموذج طلب إقامة (تجريبي).",
+        "de": "Formular für Unterkunftsanfragen (Demo).",
+        "ru": "Форма запроса на размещение (демо)."
       },
       "path": "teklif-al",
       "icon": "hotel",
@@ -136,7 +156,9 @@
       "name": {
         "tr": "İletişim",
         "en": "Contact",
-        "ar": "اتصل بنا"
+        "ar": "اتصل بنا",
+        "de": "Kontakt",
+        "ru": "Контакты"
       },
       "status": "play",
       "id": "iletisim",
@@ -157,7 +179,9 @@
       "description": {
         "tr": "Adres, telefon ve çalışma saatleri.",
         "en": "Address, phone and opening hours.",
-        "ar": "العنوان والهاتف وساعات العمل."
+        "ar": "العنوان والهاتف وساعات العمل.",
+        "de": "Adresse, Telefon und Öffnungszeiten.",
+        "ru": "Адрес, телефон и часы работы."
       }
     }
   ],
